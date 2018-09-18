@@ -1,0 +1,17 @@
+using Atk.DataPortal;
+using Atk.DataPortal.Core;
+
+namespace <$Ai_Project_NameSpace>.BLL.<$Ai_ProjectName>
+{
+    /// <summary>
+    /// <$Ai_Object_ChineseName> 数据访问接口定义
+    /// azItem:业务实例
+    /// context:访问上下文
+    /// </summary>
+    public interface I<$Ai_Bll_ClassName>Dal
+    {
+       
+       void DB_SpFetch(<$Ai_Bll_List_ClassName>Entity azItems);
+
+    }
+}

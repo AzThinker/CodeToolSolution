@@ -1,0 +1,19 @@
+insert into dbo.<$Az_MetaData>
+(fldname, fldtype, fldlen, tablename, azvalue, colid, tableid, aztype, isnullable,fldnameto,TpyeId,AppName,DefType,IsIdentity,IsKeyField,xtype
+)
+SELECT     TOP (100) PERCENT dbo.<$Azv_MetaData>.fldname, dbo.<$Azv_MetaData>.fldtype, dbo.<$Azv_MetaData>.fldlen, dbo.<$Azv_MetaData>.tablename, dbo.<$Azv_MetaData>.azvalue, 
+                      dbo.<$Azv_MetaData>.colid, dbo.<$Azv_MetaData>.tableid, dbo.<$Azv_MetaData>.aztype,cast( dbo.<$Azv_MetaData>.isnullable as bit), dbo.<$Azv_MetaData>.fldname AS fldnameto, 1 AS TpyeId,dbo.<$Azv_MetaData>.AppName,9999, dbo.<$Azv_MetaData>.IsIdentity, dbo.<$Azv_MetaData>.IsKeyField,dbo.<$Azv_MetaData>.xtype
+FROM         dbo.<$Az_MetaData> RIGHT OUTER JOIN
+                      dbo.<$Azv_MetaData> ON dbo.<$Az_MetaData>.tablename = dbo.<$Azv_MetaData>.tablename AND dbo.<$Az_MetaData>.fldname = dbo.<$Azv_MetaData>.fldname
+WHERE    dbo.<$Azv_MetaData>.AppName=<$Parameters1> AND (dbo.<$Az_MetaData>.fldname IS NULL)
+
+
+delete dbo.<$Az_MetaData>
+FROM         dbo.<$Az_MetaData> LEFT OUTER JOIN
+                      dbo.<$Azv_MetaData> ON dbo.<$Az_MetaData>.colid = dbo.<$Azv_MetaData>.colid AND dbo.<$Az_MetaData>.tableid = dbo.<$Azv_MetaData>.tableid
+WHERE     (dbo.<$Az_MetaData>.TpyeId = 1) AND (dbo.<$Azv_MetaData>.fldname IS NULL)
+
+
+update dbo.<$Az_MetaData> set     IsSelect=1, IsRequired=0, IsQuery=0, IsGrestZero=0, IsLimit=0, IsUpdata=case  when  (IsIdentity=1) or (IsKeyField=1)  then 0 else 1 end, IsDataField=1, VIsHideShow=0, VpIsCanEdit=1, VIsShow=1, IsGridEdit=0, isCreate=abs(isnull(IsIdentity,0)-1), 
+ VpIsCanEditShow=1,mylist=0 ,ShowOrder=colid,fldnameto=  fldname,  IsExtProperty=0, Relation=0, IsLazy=0, IsMethods=0,IsBinaryTo=0,DefType=0,Defvalue=''
+where  DefType=9999

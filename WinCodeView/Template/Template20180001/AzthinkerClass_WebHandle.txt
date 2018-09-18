@@ -1,0 +1,64 @@
+using Atk.DataPortal;
+using Atk.DataPortal.Core;
+using Atk.WebCore.Infrastructure;
+using Autofac;
+using <$Ai_Project_NameSpace>.BLL.<$Ai_ProjectName>;
+ 
+
+// 《<$Ai_Object_ChineseName>》 UI操作数据方法
+namespace <$Ai_Project_NameSpace>.UIServer.<$Ai_ProjectName>
+{
+
+    /// <summary>
+    /// <$Ai_Object_ChineseName> UIServer模块注册
+    /// </summary>
+    public class <$Ai_Bll_ClassName>_UI_Module : Module
+    {
+        protected override void Load(ContainerBuilder moduleBuilder)
+        {
+            moduleBuilder.RegisterType<<$Ai_Bll_ClassName>WebDto>();
+            moduleBuilder.RegisterType<<$Ai_Bll_List_ClassName>WebDto>();
+            moduleBuilder.RegisterType<<$Ai_Bll_ClassName>WebHandle>();
+        }
+    }
+
+    /// <summary>
+    /// 《<$Ai_Object_ChineseName>》UI操作数据方法
+    /// </summary>
+    public sealed class  <$Ai_Bll_ClassName>WebHandle:BusinessBaseHandle<<$Ai_Bll_List_ClassName>Entity,
+	 <$Ai_Bll_ClassName>Entity,
+	 <$Ai_Bll_List_ClassName>WebDto ,
+	 <$Ai_Bll_ClassName>WebDto>
+    {
+
+        /// <summary>
+        /// 《<$Ai_Object_ChineseName>》WebHandle 构造方法
+        /// </summary>
+        public <$Ai_Bll_ClassName>WebHandle(ILifetimeScope lc,
+            IDataPortal<<$Ai_Bll_ClassName>Entity> dataportal,
+            IDataPortalList<<$Ai_Bll_List_ClassName>Entity, <$Ai_Bll_ClassName>Entity> dataportallist,
+            DataPortalWorkContext workcontext,
+            Power power)
+        {
+            _lc = lc;
+            _dataportal = dataportal;
+            _dataportallist = dataportallist;
+            _dataportalcontext = DataSettingsHelper.GetCurrentDataSetting("<$Ai_Cnn_Name>");
+            _workcontext = workcontext;
+            _power = power;
+        }
+
+        #region  
+ 
+        /// <summary>
+        /// 获取《<$Ai_Object_ChineseName>》WebHandle 实例
+        /// </summary>  
+        public static <$Ai_Bll_ClassName>WebHandle GetWebHandle()
+        {
+           return   EngineContext.Current.Resolve<<$Ai_Bll_ClassName>WebHandle>();
+        }
+        #endregion
+
+
+     }
+  }

@@ -1,0 +1,14 @@
+
+@using <$Ai_Project_NameSpace>.UIServer.<$Ai_ProjectName>
+@model <$Ai_Bll_ClassName>WebDto
+@{
+   ViewBag.Title =  <$Ai_Bll_ClassName>WebDto.DisplayDescription;
+ }
+<h2>@<$Ai_Bll_ClassName>WebDto.DisplayDescription</h2>
+   <fieldset>
+    <legend>@<$Ai_Bll_ClassName>WebDto.DisplayDescription</legend>
+        <$Ai_View_Detail_FieldSet>
+    </fieldset>
+ 
+<$Ai_View_Html_Linkto>
+

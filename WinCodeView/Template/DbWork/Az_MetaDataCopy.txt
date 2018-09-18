@@ -1,0 +1,4 @@
+update dbo.<$Az_MetaCloum>  set     dbo.<$Az_MetaCloum>.FldDisplay= <$Az_MetaCloum>_1.FldDisplay  
+FROM         dbo.<$Az_MetaCloum> INNER JOIN
+                      dbo.<$Az_MetaCloum> AS <$Az_MetaCloum>_1 ON dbo.<$Az_MetaCloum>.FldName = <$Az_MetaCloum>_1.FldName
+WHERE     (dbo.<$Az_MetaCloum>.TableName =<$Parameters1>) AND (<$Az_MetaCloum>_1.TableName = <$Parameters2>)

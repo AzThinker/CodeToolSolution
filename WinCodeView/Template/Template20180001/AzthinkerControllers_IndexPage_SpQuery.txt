@@ -1,0 +1,14 @@
+        /// <summary>
+        /// 返回<$Ai_Object_ChineseName>列表
+        /// 异步调用数据,其异步部分明细View没有Controller只有View
+        /// </summary>
+	<$Ai_Power_CanGet>
+	public IActionResult Index(int page=0)
+	 {
+           var model = _handle.GetList(<$Ai_Paramlist_Default>);
+          if (Request.IsAjaxRequest())
+          {
+             return PartialView("DetailsPage", model);
+           }
+           return View(model);
+	 }

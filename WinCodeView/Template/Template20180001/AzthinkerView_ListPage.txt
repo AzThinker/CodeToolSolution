@@ -1,0 +1,12 @@
+@using <$Ai_Project_NameSpace>.UIServer.<$Ai_ProjectName>
+@model <$Ai_Bll_List_ClassName>WebDto
+@{
+   ViewBag.Title = <$Ai_Bll_List_ClassName>WebDto.DisplayDescription;
+ }
+
+ <div id="content">
+ <h2>@<$Ai_Bll_List_ClassName>WebDto.DisplayDescription</h2>
+ <div style="clear: both;"></div>
+    @await Html.PartialAsync("DetailsPage", Model) 
+ </div>
+@section Scripts{<script src="~/js/MvcPager.js"></script>}

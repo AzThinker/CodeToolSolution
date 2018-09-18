@@ -1,0 +1,6 @@
+        <div class="editor-label">
+           <$Ai_View_Field_Lable>
+        </div>
+        <div class="editor-field">
+           @Html.TextAreaFor(model => model.<$Ai_View_Field_Name>)
+	</div>

@@ -1,0 +1,18 @@
+CREATE TABLE [dbo].[<$Az_MetaTable>](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ObjModeName] [nvarchar](50) NOT NULL,
+	[ClassName] [nvarchar](50) NOT NULL,
+	[SchemaName] [nvarchar](50) NOT NULL,
+	[SchemaFrom] [nvarchar](50) NULL,
+	[ClassDisPlay] [nvarchar](50) NULL,
+	[CodeSetVales] [ntext] NULL,
+	[Remark] [ntext] NULL,
+	[IsCustom] [bit] NOT NULL,
+	[ObjDataType] [int] NOT NULL,
+	[ObjModeType] [int] NOT NULL,
+	[AppName] [nvarchar](50) NULL,
+ CONSTRAINT [PK_<$Az_MetaTable>] PRIMARY KEY CLUSTERED 
+(
+	[ObjModeName] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]

@@ -1,0 +1,74 @@
+        /// <summary>
+        /// 删除 <$Ai_Object_ChineseName> 时
+        /// </summary>
+        /// <param name="azItem">删除项目</param>
+	public void DB_Delete(<$Ai_Bll_ClassName>Entity azItem)
+        {
+	    #region 初始化数据
+	    OperateState state = new OperateState();
+            StringBuilder azStrBuilder = new StringBuilder();
+	    #endregion
+	    	    //单记录操作
+	    bool isoneupdate = string.IsNullOrWhiteSpace(azItem.Criteria.QueryWhere);
+	    //启用了事务并且是多记录操作时，才使用事务
+            bool istran = azItem.Context.IsTransaction && !isoneupdate;
+            if (isoneupdate) 
+	    {
+	        //无条件传入时,以关键字段值为条件进行删除
+		azStrBuilder.Append(" Delete [a0] From <$Ai_Do_Table>  As [a0] <$Ai_Where_KeysField_SQL> ");
+	    } else
+	    {
+		azStrBuilder.Append(" Delete [a0] From <$Ai_Do_Table>  As [a0] ");
+		azStrBuilder.Append(azItem.Criteria.QueryWhere);
+		azStrBuilder.Append(azItem.Criteria.QueryOrder);
+	    }
+            using (SqlConnection cn = new SqlConnection(azItem.Context.DbConnectionString))
+            {
+	    	SqlTransaction azTransaction = null;
+                try
+                {
+                    if (istran)
+                    {
+                        azTransaction = cn.BeginTransaction("<$Ai_Bll_ClassName>Entity_Delete_tran");
+
+                    }
+                cn.Open();
+                using (SqlCommand cmd = new SqlCommand(azStrBuilder.ToString(), cn))
+                {
+		    #region 数据参数
+		    if (isoneupdate)
+                    {
+		     //无条件传入时,以关键字段值为条件进行删除
+		     SqlParameter param =null;
+                     <$Ai_Sql_PutIn_Keys_Parameters>
+		    }
+		    #endregion
+
+                    int c = cmd.ExecuteNonQuery();
+                    if (c == 0)
+                    {
+                        state.Error.Add("Delete", "没有记录删除");
+                    }
+		    state.AffectedRows = c;
+                    azItem.State = state;
+                };
+             if (istran)
+                    {
+                        azTransaction.Commit();
+
+                    }
+                }
+                catch
+                {
+                    if (istran)
+                    {
+                        azTransaction.Rollback();
+                        state.Error.Add("数据库更新错误！", "没有记录删除");
+                    }
+                    else
+                    {
+                        state.Error.Add("数据库删除错误！", "删除记录错误");
+                    }  
+                }
+            }
+        }

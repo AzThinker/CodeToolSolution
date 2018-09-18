@@ -1,0 +1,8 @@
+        <div class="editor-label">
+           <$Ai_View_Field_Lable>
+        </div>
+          <div class="editor-field">
+           @Html.RadioButtonFor(model => model.<$Ai_View_Field_Name>, true)<$Ai_View_Field_Lable>
+           @Html.RadioButtonFor(model => model.<$Ai_View_Field_Name>, false)<$Ai_View_Field_Lable>
+           @Html.ValidationMessageFor(model => model.<$Ai_View_Field_Name>)
+        </div>

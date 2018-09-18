@@ -1,0 +1,49 @@
+using Atk.DataPortal;
+using Atk.DataPortal.Core;
+using Atk.DataPortal.UiServer;
+using Atk.WebCore.Infrastructure;
+using Autofac;
+using System;
+using System.ComponentModel.DataAnnotations;
+using Webdiyer.WebControls.AspNetCore;
+using <$Ai_Project_NameSpace>.BLL.<$Ai_ProjectName>;
+
+
+// <$Ai_Object_ChineseName>  WEB UI列表类
+namespace  <$Ai_Project_NameSpace>.UIServer.<$Ai_ProjectName>
+{
+    /// <summary>
+    /// <$Ai_Object_ChineseName>  WEB UI列表类
+    /// </summary>
+    public sealed class <$Ai_Bll_List_ClassName>WebDto :BaseListUIDto<<$Ai_Bll_ClassName>WebDto,<$Ai_Bll_ClassName>Entity>, IPagedList
+    {
+        #region 属性定义
+	/// <summary>
+        /// 显示名称
+        /// </summary>
+        [ScaffoldColumn(false)]
+        public static string DisplayDescription { get; set; }
+        public int CurrentPageIndex { get; set; }
+        private int pageSize;
+        public int TotalItemCount
+        {
+            get { return this.TotalCount; }
+            set { this.TotalCount = value; }
+        }
+
+        public int PageSize { get => pageSize; set => pageSize = value; }
+	#endregion
+
+	#region 构造方法
+        /// <summary>
+        ///《<$Ai_Object_ChineseName>》 构造方法
+        /// </summary>
+        public <$Ai_Bll_List_ClassName>WebDto(ILifetimeScope lc): base()
+        {
+	   _lc = lc;
+           DisplayDescription = "<$Ai_Object_ChineseName>";
+	   Power = new Power();
+        }
+	#endregion
+    }
+}

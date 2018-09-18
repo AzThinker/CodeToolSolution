@@ -1,0 +1,8 @@
+
+	/// <summary>
+        /// 查询 <$Ai_Object_ChineseName> 
+        /// </summary>
+	public void DataPortal_Fetch()
+        {
+            CheckworkContext().DB_Fetch(this);
+        }

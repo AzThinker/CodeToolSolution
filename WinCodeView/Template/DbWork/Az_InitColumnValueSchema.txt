@@ -1,0 +1,12 @@
+update dbo.<$Az_MetaCloum> set     IsSelect=1, IsRequired=0, IsQuery=0, IsGrestZero=0, IsLimit=0, IsUpdata=case  when  (IsIdentity=1) or (IsKeyField=1)  then 0 else 1 end, IsDataField=1, VIsHideShow=0, VpIsCanEdit=1, VIsShow=1, IsGridEdit=0, isCreate=abs(isnull(IsIdentity,0)-1), 
+ VpIsCanEditShow=1,CustomList=0 ,ShowOrder=0,FldNameTo=  FldName,  IsExtProperty=0, Relation=0, IsLazy=0, IsMethods=0,IsBinaryTo=0,DefType=0,Defvalue='',IsDefvalue=0 ,SchemaFrom='',TpyeId=1
+WHERE    tablename=<$Parameters1>
+
+update  dbo.<$Az_MetaCloum>  set      FldLenCode=cast(FldLen as int) 
+FROM         dbo.<$Az_MetaCloum>  
+WHERE    tablename=<$Parameters1>
+
+update  dbo.<$Az_MetaCloum>  set      FldLenCode=cast(FldLen as int)/2
+FROM         dbo.<$Az_MetaCloum>  
+where (FldType='nvarchar' or  FldType='nchar') and  tablename=<$Parameters1>
+ 

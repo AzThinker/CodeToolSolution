@@ -1,0 +1,16 @@
+using Atk.DataPortal;
+using Atk.DataPortal.Core;
+
+namespace <$Ai_Project_NameSpace>.BLL.<$Ai_ProjectName>
+{
+    /// <summary>
+    /// <$Ai_Object_ChineseName> 数据访问接口定义
+    /// AzItem:业务实例
+    /// </summary>
+    public interface I<$Ai_Bll_ClassName>Dal
+    {
+       
+        <$AI_Dal_InterfaceMethod>
+
+    }
+}

@@ -1,0 +1,3 @@
+Update   <$Az_MetaDataM>  set     SchemaFrom=N'<$Parameters1>'
+FROM         <$Az_MetaDataM>
+WHERE     ( SchemaFrom =N'<$Parameters2>')

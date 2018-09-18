@@ -1,0 +1,3 @@
+@Html.AjaxPager(@Model.TotalCount,(int)ViewBag.__<$Ai_Bll_ClassName>Rows,"<$Ai_View_Ajax_UpdateTargetId>") 
+@Html.Pager(@Model.TotalCount,(int)ViewBag.__<$Ai_Bll_ClassName>Rows) 
+ 

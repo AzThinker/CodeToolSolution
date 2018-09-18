@@ -1,0 +1,36 @@
+Create  procedure [dbo].[AzThinker_UpdateRemark](
+ @Remark varchar(200),
+ @ObjType varchar(20),
+ @ObjName varchar(128),
+ @ColumnName varchar(128)  =null)
+as
+begin
+  declare @column varchar(10)
+  
+  if (@ColumnName is null) 
+    set @column=null 
+   else
+     set @column='COLUMN'
+  IF (SELECT COUNT(*) FROM ::FN_LISTEXTENDEDPROPERTY(
+   'MS_DESCRIPTION', 'USER', 'DBO', @ObjType, @ObjName,@column, @ColumnName)) = 0
+    
+  EXEC SP_ADDEXTENDEDPROPERTY 
+     @name=N'MS_Description', 
+     @value=@Remark , 
+     @level0type=N'SCHEMA',
+     @level0name=N'dbo', 
+     @level1type=@ObjType,
+     @level1name=@ObjName ,
+     @level2type=@column,
+     @level2name=@ColumnName 
+  ELSE
+  EXEC SP_UPDATEEXTENDEDPROPERTY  
+     @name=N'MS_Description', 
+     @value=@Remark , 
+     @level0type=N'SCHEMA',
+     @level0name=N'dbo', 
+     @level1type=@ObjType,
+     @level1name=@ObjName ,
+     @level2type=@column,
+     @level2name=@ColumnName  
+  end

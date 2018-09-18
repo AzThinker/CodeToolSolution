@@ -1,0 +1,8 @@
+update  B  set   B.IsKeyField= A.IsKeyField, B.IsIdentity= A.IsIdentity
+FROM         (SELECT     fldnameto, IsKeyField, IsIdentity
+                       FROM          dbo.<$Az_MetaData>
+                       WHERE      (tablename = N'<$Parameters1>')) AS A INNER JOIN
+                     (
+SELECT     fldnameto, IsKeyField, IsIdentity
+FROM         dbo.<$Az_MetaData>
+WHERE     (tablename = N'<$Parameters2>')) as B ON A.fldnameto = B.fldnameto

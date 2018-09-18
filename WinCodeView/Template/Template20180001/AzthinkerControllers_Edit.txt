@@ -1,0 +1,29 @@
+        /// <summary>
+        /// 编辑<$Ai_Object_ChineseName>
+        /// </summary>
+       <$Ai_Power_CanEdit>
+       public IActionResult Edit(<$Ai_Keys_Arg_Param_Id>)
+        {
+	   var bizExp = _handle.GetExp();
+	   bizExp.AddAndWhere(s => <$Ai_Keys_Param_Id_Lambda_NonePer>);
+	   var model = _handle.Get(bizExp);
+           <$Ai_Dropdown_List>
+           return View(model);
+        }
+
+        /// <summary>
+        ///  保存编辑的<$Ai_Object_ChineseName>
+        /// </summary>
+       <$Ai_Power_CanEdit>
+       <$Ai_HttpPost>
+       [ActionName("Edit")]
+       public IActionResult EditPost(<$Ai_Bll_ClassName>WebDto model)
+        {
+           if (ModelState.IsValid)
+             {
+                _handle.Update(model);//按增加保存 
+                return RedirectToAction("Index");
+             } 
+               <$Ai_Dropdown_List>
+              return View(model);
+        }

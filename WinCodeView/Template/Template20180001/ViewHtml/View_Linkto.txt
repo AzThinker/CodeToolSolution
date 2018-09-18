@@ -1,0 +1,5 @@
+  <ul>
+    <li><$Ai_View_Edit_link_li_NoJq> </li>
+    <li><$Ai_View_Delete_link_li_NoJq> </li>
+    <li>@Html.ActionLink("∑µªÿ¡–±Ì", "<$Ai_Goto_Index>") </li>
+  </ul>

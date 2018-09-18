@@ -1,0 +1,22 @@
+        /// <summary>
+        /// 独立页面删除<$Ai_Object_ChineseName>
+        /// </summary>
+	<$Ai_Power_CanDelete>
+       public ActionResult Delete(<$Ai_Keys_Arg_Param_Id>)
+        {
+	  var bizExp = _handle.GetExp();
+	  bizExp.AddAndWhere(s => <$Ai_Keys_Param_Id_Lambda_NonePer>);
+          var model = _handle.Get(bizExp);;
+          return View(model);
+        }
+
+        /// <summary>
+        /// 独立页面删除<$Ai_Object_ChineseName>
+        /// </summary>
+	<$Ai_Power_CanDelete>
+       [HttpPost, ActionName("Delete")]
+       public IActionResult DeleteConfirmed(<$Ai_Bll_ClassName>WebDto model)
+        {
+	     _handle.Delete(model);
+             return RedirectToAction("IndexPage");
+        }

@@ -1,0 +1,3 @@
+Update   <$Az_MetaData>  set     tablename=N'<$Parameters1>'
+FROM         <$Az_MetaData>
+WHERE     ( tablename =N'<$Parameters2>')

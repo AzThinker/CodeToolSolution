@@ -1,0 +1,24 @@
+@using <$Ai_Project_NameSpace>.UIServer.<$Ai_ProjectName>
+@model <$Ai_Bll_List_ClassName>WebDto
+@{
+   ViewBag.Title = <$Ai_Bll_List_ClassName>WebDto.DisplayDescription;
+ }
+
+<h2>@<$Ai_Bll_List_ClassName>WebDto.DisplayDescription</h2>
+<div>
+    <table>
+       <tr>
+        <$Ai_View_Table_Head>
+       <th>
+       </th>
+       </tr>
+        @foreach (var item in Model)
+        {
+               <tr>
+                   <$Ai_View_Table_Body>
+                </tr>
+         }
+     </table>
+</div>
+ 
+ 

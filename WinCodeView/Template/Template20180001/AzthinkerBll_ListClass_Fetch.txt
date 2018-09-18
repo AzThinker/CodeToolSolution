@@ -1,0 +1,11 @@
+        /// <summary>
+        /// 获取 <$Ai_Object_ChineseName> 列表 
+        /// </summary>
+        /// <param name="Criteria">列表参数</param>
+        /// <param name="context">访问上下文</param>
+	/// <param name="workContext">工作上下文</param>
+	public void DataPortal_Fetch()
+        {
+	    //访问实际数据
+            CheckworkContext().DB_FetchList(this);
+        }

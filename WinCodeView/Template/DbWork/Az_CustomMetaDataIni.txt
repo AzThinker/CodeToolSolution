@@ -1,0 +1,3 @@
+update dbo.<$Az_MetaData> set     IsSelect=1, IsRequired=0, IsQuery=0, IsGrestZero=0, IsLimit=0, IsUpdata=case  when  (IsIdentity=1) or (IsKeyField=1)  then 0 else 1 end, IsDataField=1, VIsHideShow=0, VpIsCanEdit=1, VIsShow=1, IsGridEdit=0, isCreate=abs(isnull(IsIdentity,0)-1), 
+	 VpIsCanEditShow=1,mylist=0 ,ShowOrder=colid,fldnameto=  fldname,  IsExtProperty=0, Relation=0, IsLazy=0, IsMethods=0,IsBinaryTo=0,Defvalue='',DefType=0,IsDefvalue=0
+	where   tablename=<$Parameters1>

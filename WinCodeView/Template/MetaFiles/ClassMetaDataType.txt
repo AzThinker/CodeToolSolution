@@ -1,0 +1,12 @@
+int
+string
+bool
+DateTime
+byte[]
+decimal
+double
+Int64
+float
+short
+Object
+Guid

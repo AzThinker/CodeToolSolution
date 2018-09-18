@@ -1,0 +1,7 @@
+	/// <summary>
+        /// 删除 <$Ai_Object_ChineseName> 
+        /// </summary>
+       public void DataPortal_Delete()
+        {
+             CheckworkContext().DB_Delete(this);
+        }

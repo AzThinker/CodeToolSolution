@@ -1,0 +1,25 @@
+CREATE VIEW [dbo].[<$Az_MetaQueryView>]
+AS
+SELECT     TOP (100) PERCENT A.name AS fldname, C.name AS fldtype, A.length AS fldlen, B.name AS tablename, D.value, A.colid, A.id AS tableid, A.type, A.isnullable, B.xtype, CASE WHEN CHARINDEX('_', 
+                      B.name) > 1 THEN LEFT(B.name, CHARINDEX('_', B.name) - 1) ELSE '' END AS AppName, (CASE WHEN COLUMNPROPERTY(a.id, a.name, 'IsIdentity') = 1 THEN '1' ELSE '0' END) AS IsIdentity, 
+                      (CASE WHEN
+                          (SELECT     COUNT(*)
+                            FROM          sysobjects
+                            WHERE      (name IN
+                                                       (SELECT     name
+                                                         FROM          sysindexes
+                                                         WHERE      (id = a.id) AND (indid IN
+                                                                                    (SELECT     indid
+                                                                                      FROM          sysindexkeys
+                                                                                      WHERE      (id = a.id) AND (colid IN
+                                                                                                                 (SELECT     colid
+                                                                                                                   FROM          syscolumns
+                                                                                                                   WHERE      (id = a.id) AND (name = a.name))))))) AND (xtype = 'PK')) > 0 THEN '1' ELSE '0' END) AS IsKeyField, A.isoutparam
+FROM         sys.syscolumns AS A LEFT OUTER JOIN
+                      sys.extended_properties AS D ON A.id = D.major_id AND A.colid = D.minor_id LEFT OUTER JOIN
+                      sys.sysobjects AS B ON A.id = B.id LEFT OUTER JOIN
+                      sys.systypes AS C ON A.xtype = C.xtype
+WHERE     (C.name <> 'sysname') AND (B.xtype = 'U' OR
+                      B.xtype = 'V' OR
+                      B.xtype = 'P') AND (NOT (B.name LIKE N'Azthinker%'))
+ORDER BY tablename, A.colid

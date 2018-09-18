@@ -1,0 +1,19 @@
+function addrow(<$Ai_View_Call_Scrip_Parameters>)
+    {
+        $("#dialog-contentmsg").empty();
+        $.ajax({
+            url: "/<$Ai_Bll_ClassName>/CreateDialog",
+            async: false,
+            success: function (data)
+            {
+                $("#dialog-contentmsg").html(data);
+            }
+        });
+        $("#dialog-contentmsg").dialog({
+            title: "Ôö¼Ó",
+            width: 'auto',
+            height: "auto",
+            modal: true,
+            position: ['center', 50]
+        });
+    }

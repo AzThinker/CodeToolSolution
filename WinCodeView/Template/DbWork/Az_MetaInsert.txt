@@ -1,0 +1,3 @@
+insert into <$Az_MetaCloum> (FldName,FldNameTo, FldType, FldLen, TableName, FldDisplay, IsNullable,IsIdentity,IsKeyField,AppName,XType,IsOutParam)
+SELECT     fldname,fldname, fldtype, fldlen, tablename, isnull(CAST( value as nvarchar(100)),fldname), cast(isnullable as bit),IsIdentity,IsKeyField,'<$Az_AppName>',xtype,IsOutParam
+FROM         dbo.<$Az_MetaQueryView>

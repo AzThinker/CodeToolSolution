@@ -1,0 +1,21 @@
+<div id="dialog-contentmsg" style="display: none"></div>
+<script type="text/javascript">
+</script>
+<th colspan="<$ai_view_table_th_colspan>" class="table-title">
+<input id="aicheckall" name="aicheckall" type="checkbox" onclick="aiselectall()" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1、弹出框占位
+2-3、JS语句标识

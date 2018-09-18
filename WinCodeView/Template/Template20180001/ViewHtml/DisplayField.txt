@@ -1,0 +1,7 @@
+        <div class="display-label">
+           <$Ai_View_Field_Lable>
+        </div>
+        <div class="display-field">
+           @Html.DisplayFor(model => model.<$Ai_View_Field_Name>)
+        </div>
+         

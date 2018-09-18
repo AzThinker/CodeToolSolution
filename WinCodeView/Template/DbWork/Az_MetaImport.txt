@@ -1,0 +1,18 @@
+delete FROM         dbo.<$Az_MetaCloum>  where TableName='<$Parameters1>' and SchemaFrom='<$Parameters2>'
+
+insert into <$Az_MetaCloum> (FldName,FldNameTo, FldType, FldLen, TableName, FldDisplay,  TpyeId,IsNullable,IsIdentity,
+IsKeyField,AppName,XType, IsDataField, SchemaFrom,IsOutParam)
+SELECT     fldname,fldname, fldtype, fldlen, '<$Parameters1>' as tablename, isnull(cast(value as nvarchar),fldname),   2,cast(isnullable as bit),
+IsIdentity,IsKeyField,'<$Az_AppName>',xtype,0, '<$Parameters2>',IsOutParam
+FROM dbo.<$Az_MetaQueryView>
+where TableName='<$Parameters2>'
+
+update dbo.<$Az_MetaCloum> set     IsSelect=1, IsRequired=0, IsQuery=0, IsGrestZero=0, IsLimit=0, IsUpdata=case  when  (IsIdentity=1) or (IsKeyField=1)  then 0 else 1 end, IsDataField=1, VIsHideShow=0, VpIsCanEdit=1, VIsShow=1, IsGridEdit=0, isCreate=abs(isnull(IsIdentity,0)-1), 
+ VpIsCanEditShow=1,CustomList=0 ,ShowOrder=0,FldNameTo=  FldName,  IsExtProperty=0, Relation=0, IsLazy=0, IsMethods=0,IsBinaryTo=0,DefType=0,Defvalue='',IsDefvalue=0
+where TableName='<$Parameters1>' and SchemaFrom='<$Parameters2>'
+
+update  dbo.<$Az_MetaCloum>  set      FldLenCode=cast(fldlen as int) 
+FROM dbo.<$Az_MetaCloum>  where TableName='<$Parameters1>' and SchemaFrom='<$Parameters2>'
+
+update  dbo.<$Az_MetaCloum>  set      FldLenCode=cast(fldlen as int)/2
+FROM dbo.<$Az_MetaCloum> where (FldType='nvarchar' or  FldType='nchar')  and  TableName='<$Parameters1>' and SchemaFrom='<$Parameters2>'

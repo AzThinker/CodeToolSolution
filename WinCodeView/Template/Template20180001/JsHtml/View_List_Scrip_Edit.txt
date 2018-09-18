@@ -1,0 +1,20 @@
+function editrow(<$Ai_View_Call_Scrip_Parameters>)
+    {
+        $("#dialog-contentmsg").empty();
+        $.ajax({
+            url: "/<$Ai_Bll_ClassName>/EditDialog",
+            data: {<$Ai_View_Scrip_Data_Parameters> },
+            async: false,
+            success: function (data)
+            {
+                $("#dialog-contentmsg").html(data);
+            }
+        });
+        $("#dialog-contentmsg").dialog({
+            title: "ÐÞ¸Ä",
+            width: 'auto',
+            height: "auto",
+            modal: true,
+            position: ['center', 50]
+        });
+    }

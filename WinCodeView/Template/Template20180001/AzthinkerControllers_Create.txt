@@ -1,0 +1,27 @@
+      /// <summary>
+      /// 增加<$Ai_Object_ChineseName>
+      /// </summary>
+      <$Ai_Power_CanCreate>
+      public ActionResult Create()
+        {
+          <$Ai_Dropdown_List>
+          var model = _handle.GetNew();
+          return View(model);
+        }
+
+        /// <summary>
+        /// 增加保存<$Ai_Object_ChineseName>
+        /// </summary>
+	<$Ai_Power_CanCreate>
+        <$Ai_HttpPost>
+       [ActionName("Create")]
+       public IActionResult CreatePost(<$Ai_Bll_ClassName>WebDto model)
+        {
+           if (ModelState.IsValid)
+             {
+                _handle.Insert(model);//按增加保存 
+                return RedirectToAction("Index");
+             } 
+           <$Ai_Dropdown_List>
+           return View(model);
+        }

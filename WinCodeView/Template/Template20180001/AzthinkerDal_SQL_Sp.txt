@@ -1,0 +1,78 @@
+using Autofac;
+using Atk.DataPortal;
+using Atk.DataPortal.Core;
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Text;
+using Module = Autofac.Module;
+using <$Ai_Project_NameSpace>.BLL.<$Ai_ProjectName>;
+
+// <summary>
+// SQL Server 2008 数据访问层
+// 不支持SQL Server 2000
+// </summary>
+namespace <$Ai_Project_NameSpace>.DB.<$Ai_ProjectName>
+{
+
+    /// <summary>
+    /// 此处实现 Autofac Module用于《<$Ai_Object_ChineseName>》相关类注册用,
+    /// 此处只注册业务类。
+    /// 由于WCF的存在,业务层,数据访问层可能和IIS布署不在同一台服务器上
+    /// 因而其他层的类,不应在此出现。
+    /// </summary>
+    public class <$Ai_Bll_ClassName>_Module : Module
+    {
+        protected override void Load(ContainerBuilder moduleBuilder)
+        {
+            moduleBuilder.RegisterType<<$Ai_Bll_ClassName>Entity>();
+            moduleBuilder.RegisterType<<$Ai_Bll_ClassName>_DB>().As<I<$Ai_Bll_ClassName>Dal>();
+        }
+    }
+
+    /// <summary>
+    /// 此处实现 <$Ai_Object_ChineseName> 执行操作 I<$Ai_Bll_ClassName>Dal 接口
+    /// </summary>
+    public   class <$Ai_Bll_ClassName>_DB  :I<$Ai_Bll_ClassName>Dal
+    {
+
+	/// <summary>
+	/// 执行操作 <$Ai_Object_ChineseName>
+	/// </summary>
+	/// <param name="azItem">业务类</param>
+	/// <param name="context">上下文</param>
+	public   void DB_Execute(<$Ai_Bll_ClassName>Entity azItem) 
+	{
+	      OperateState state = new OperateState();
+	      using (SqlConnection cn = new SqlConnection(azItem.Context.DbConnectionString))
+               {
+                  cn.Open();
+                  using (SqlCommand cmd = new SqlCommand("<$Ai_Do_Table>", cn)) 
+                     {
+		       cmd.CommandType = CommandType.StoredProcedure; 
+
+		       #region 数据参数
+
+                      <$Ai_Sql_Exec_Params>
+
+		       #endregion
+
+                       try
+                        {
+                            state.AffectedRows=cmd.ExecuteNonQuery();
+			    <$Ai_Sql_Query_Parameters_Out>
+                         }
+                        catch 
+                         {
+                            state.Error.Add("执行操作", "没有正确执行!");
+                         }
+                     azItem.State= state;
+                }
+            }
+        }
+    }
+
+}
+
+ 
+

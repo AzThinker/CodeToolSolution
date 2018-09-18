@@ -1,0 +1,2 @@
+	  var dlist<$Number> = <$Ai_DropList_ClassName>WebHandle.GetWebHandle().GetList();
+          ViewBag.<$View_ListField> = new SelectList(dlist<$Number>, "<$dataValueField>", "<$dataTextField>"<$selectedValue>);

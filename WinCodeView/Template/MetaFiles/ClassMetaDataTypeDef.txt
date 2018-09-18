@@ -1,0 +1,12 @@
+int
+nvarchar
+bit
+datetime
+binary
+decimal
+double
+bigint
+float
+smallint
+Variant
+uniqueidentifier

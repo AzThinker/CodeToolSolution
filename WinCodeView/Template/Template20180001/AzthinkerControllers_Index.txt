@@ -1,0 +1,9 @@
+        /// <summary>
+        /// 返回 <$Ai_Object_ChineseName> 列表
+        /// </summary>
+	<$Ai_Power_CanGet>
+       public IActionResult Index()
+        {
+           var model = _handle.GetList();
+           return View(model);
+        }

@@ -1,0 +1,554 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1C70F577-35C5-4219-A2EC-C097ED151219}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WinCodeView</RootNamespace>
+    <AssemblyName>WinCodeView</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>WinCodeView.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Atk.ExpressionTurn">
+      <HintPath>..\..\Dll\Atk.ExpressionTurn.dll</HintPath>
+    </Reference>
+    <Reference Include="CircularProgressBar">
+      <HintPath>..\..\Dll\CircularProgressBar.dll</HintPath>
+    </Reference>
+    <Reference Include="DataTableToObjectEx, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\DotnetRep\meRep\DataTableToObjectEx\DataTableToObject\bin\Debug\DataTableToObjectEx.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.0.0.999, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.0.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.ConnectionUI.Dialog">
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\Microsoft.Data.ConnectionUI.Dialog.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="SqlRepoEx">
+      <HintPath>D:\DotnetRep\meRep\SqlRepoEx\SqlRepo.SqlServer.Static\bin\Debug\netstandard2.0\SqlRepoEx.dll</HintPath>
+    </Reference>
+    <Reference Include="SqlRepoEx.SqlServer">
+      <HintPath>D:\DotnetRep\meRep\SqlRepoEx\SqlRepo.SqlServer.Static\bin\Debug\netstandard2.0\SqlRepoEx.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="SqlRepoEx.SqlServer.Static">
+      <HintPath>D:\DotnetRep\meRep\SqlRepoEx\SqlRepo.SqlServer.Static\bin\Debug\netstandard2.0\SqlRepoEx.SqlServer.Static.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.4.5.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Data.SqlClient, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.5.1\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.1\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.AccessControl, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.4.5.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.4.5.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.4.5.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.6\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TableTranslatorEx">
+      <HintPath>D:\DotnetRep\meRep\TableTranslatorEx\TableTranslator\bin\Debug\TableTranslatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="Westwind.RazorHosting, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Westwind.RazorHosting.3.3.0\lib\net45\Westwind.RazorHosting.dll</HintPath>
+    </Reference>
+    <Reference Include="WinFormAnimation">
+      <HintPath>..\..\Dll\WinFormAnimation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AzClassDesign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AzClassDesign.Designer.cs">
+      <DependentUpon>AzClassDesign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CodeTools\AzCreateItem.cs" />
+    <Compile Include="DialogUI\AzCreateCodeSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogUI\AzCreateCodeSelect.Designer.cs">
+      <DependentUpon>AzCreateCodeSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CodeTools\AzDalInterface.cs" />
+    <Compile Include="CodeTools\AzOperateSqlModel.cs" />
+    <Compile Include="CodeTools\AzProjectInformation.cs" />
+    <Compile Include="CodeTools\AzSql_Statement.cs" />
+    <Compile Include="CodeTools\AzStatementUtils.cs" />
+    <Compile Include="CodeTools\CodeHandle.cs" />
+    <Compile Include="DialogUI\AzPropertyCopyOp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogUI\AzPropertyCopyOp.Designer.cs">
+      <DependentUpon>AzPropertyCopyOp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogUI\AzCopyColumnTableSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogUI\AzCopyColumnTableSelect.Designer.cs">
+      <DependentUpon>AzCopyColumnTableSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogUI\AzColumnDefaultValue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogUI\AzColumnDefaultValue.Designer.cs">
+      <DependentUpon>AzColumnDefaultValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogUI\AzColumsEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogUI\AzColumsEdit.Designer.cs">
+      <DependentUpon>AzColumsEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogUI\AzCustomAttribute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogUI\AzCustomAttribute.Designer.cs">
+      <DependentUpon>AzCustomAttribute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogUI\AzCustomColumsEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogUI\AzCustomColumsEdit.Designer.cs">
+      <DependentUpon>AzCustomColumsEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogUI\AzCustomMetaFromSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogUI\AzCustomMetaFromSet.Designer.cs">
+      <DependentUpon>AzCustomMetaFromSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AzBaseSetEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AzBaseSetEdit.Designer.cs">
+      <DependentUpon>AzBaseSetEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AzCustomMateManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AzCustomMateManage.Designer.cs">
+      <DependentUpon>AzCustomMateManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AzDataBSetEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AzDataBSetEdit.Designer.cs">
+      <DependentUpon>AzDataBSetEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogUI\AzCustomMetaDataEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogUI\AzCustomMetaDataEdit.Designer.cs">
+      <DependentUpon>AzCustomMetaDataEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogUI\AzDisplayName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogUI\AzDisplayName.Designer.cs">
+      <DependentUpon>AzDisplayName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogUI\AzLookDbData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogUI\AzLookDbData.Designer.cs">
+      <DependentUpon>AzLookDbData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogUI\AzViewCustomListEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogUI\AzViewCustomListEdit.Designer.cs">
+      <DependentUpon>AzViewCustomListEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogUI\F_Progress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogUI\F_Progress.Designer.cs">
+      <DependentUpon>F_Progress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\AzCdgnClassProperty.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\AzCdgnClassProperty.Designer.cs">
+      <DependentUpon>AzCdgnClassProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AzCdgnDBSchemacs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\AzCdgnDBSchemacs.Designer.cs">
+      <DependentUpon>AzCdgnDBSchemacs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AzCdgnDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\AzCdgnDetail.Designer.cs">
+      <DependentUpon>AzCdgnDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AzCdgnMasterDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\AzCdgnMasterDisplay.Designer.cs">
+      <DependentUpon>AzCdgnMasterDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Extensions\AtkConverter.cs" />
+    <Compile Include="UI\Extensions\AzClassCreatProperty.cs" />
+    <Compile Include="UI\Extensions\PropertyClasses.cs" />
+    <Compile Include="UI\Extensions\PropertyHelper.cs" />
+    <Compile Include="UI\Extensions\PropertyManageCls.cs" />
+    <Compile Include="UI\Extensions\PropertySorter.cs" />
+    <EmbeddedResource Include="AzBaseSetEdit.resx">
+      <DependentUpon>AzBaseSetEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AzClassDesign.resx">
+      <DependentUpon>AzClassDesign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogUI\AzCreateCodeSelect.resx">
+      <DependentUpon>AzCreateCodeSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogUI\AzPropertyCopyOp.resx">
+      <DependentUpon>AzPropertyCopyOp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogUI\AzColumnDefaultValue.resx">
+      <DependentUpon>AzColumnDefaultValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogUI\AzColumsEdit.resx">
+      <DependentUpon>AzColumsEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogUI\AzCopyColumnTableSelect.resx">
+      <DependentUpon>AzCopyColumnTableSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogUI\AzCustomAttribute.resx">
+      <DependentUpon>AzCustomAttribute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogUI\AzCustomColumsEdit.resx">
+      <DependentUpon>AzCustomColumsEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AzCustomMateManage.resx">
+      <DependentUpon>AzCustomMateManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogUI\AzCustomMetaFromSet.resx">
+      <DependentUpon>AzCustomMetaFromSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AzDataBSetEdit.resx">
+      <DependentUpon>AzDataBSetEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogUI\AzCustomMetaDataEdit.resx">
+      <DependentUpon>AzCustomMetaDataEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogUI\AzDisplayName.resx">
+      <DependentUpon>AzDisplayName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogUI\AzLookDbData.resx">
+      <DependentUpon>AzLookDbData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogUI\AzViewCustomListEdit.resx">
+      <DependentUpon>AzViewCustomListEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogUI\F_Progress.resx">
+      <DependentUpon>F_Progress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UI\AzCdgnClassProperty.resx">
+      <DependentUpon>AzCdgnClassProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AzCdgnDBSchemacs.resx">
+      <DependentUpon>AzCdgnDBSchemacs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AzCdgnDetail.resx">
+      <DependentUpon>AzCdgnDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AzCdgnMasterDisplay.resx">
+      <DependentUpon>AzCdgnMasterDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\MetaWorkLib.Domain.AzMetaCloumListEntity.datasource" />
+    <None Include="Properties\DataSources\MetaWorkLib.Domain.AzMetaCustomCloumEntity.datasource" />
+    <None Include="Properties\DataSources\MetaWorkLib.Domain.AzMetaCustomCloumListEntity.datasource" />
+    <None Include="Properties\DataSources\MetaWorkLib.Domain.AzMetaTableEntity.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Template\Template20180001\TemplateSet.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MetaWorkLib\MetaWorkLib.csproj">
+      <Project>{1713b63b-298d-4975-9c16-74986b7c9ea6}</Project>
+      <Name>MetaWorkLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btimgAdd.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btimgDelete.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btimgEdit.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btimgExit.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btimgLast.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btimgNext.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btimgBefore.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btimgFirst.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-ns.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wand-arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btimgSave.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btimgSaveAll.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit-indent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit-outdent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit-padding-left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ui-splitter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\counter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-180.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-switch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-retweet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Template\DbWork\AzThinker_Exec.txt" />
+    <Content Include="Template\DbWork\AzThinker_UpdateRemark.txt" />
+    <Content Include="Template\DbWork\Az_CustomMetaDataIni.txt" />
+    <Content Include="Template\DbWork\Az_InitColumnValueSchema.txt" />
+    <Content Include="Template\DbWork\Az_KeySynchronization.txt" />
+    <Content Include="Template\DbWork\Az_MetaCloum.txt" />
+    <Content Include="Template\DbWork\Az_MetaDataCopy.txt" />
+    <Content Include="Template\DbWork\Az_MetaDataMList_IniOne.txt" />
+    <Content Include="Template\DbWork\Az_MetaDataRef.txt" />
+    <Content Include="Template\DbWork\Az_MetaImport.txt" />
+    <Content Include="Template\DbWork\Az_MetaImportTmp.txt" />
+    <Content Include="Template\DbWork\Az_MetaInit.txt" />
+    <Content Include="Template\DbWork\Az_MetaInsert.txt" />
+    <Content Include="Template\DbWork\Az_MetaQueryView.txt" />
+    <Content Include="Template\DbWork\Az_MetaTable.txt" />
+    <Content Include="Template\DbWork\Az_UpCustomMetaDName.txt" />
+    <Content Include="Template\DbWork\Az_UpCustomMetaName.txt" />
+    <Content Include="Template\DbWork\ListUiIgnore.txt" />
+    <Content Include="Template\Defaults\DefAttrList.txt" />
+    <Content Include="Template\Defaults\DefValueList.txt" />
+    <Content Include="Template\MetaFiles\ClassDataGeneric.txt" />
+    <Content Include="Template\MetaFiles\ClassDataType.txt" />
+    <Content Include="Template\MetaFiles\ClassDataTypeTurn.txt" />
+    <Content Include="Template\MetaFiles\ClassFieldDefault.txt" />
+    <Content Include="Template\MetaFiles\ClassMetaDataType.txt" />
+    <Content Include="Template\MetaFiles\ClassMetaDataTypeDef.txt" />
+    <Content Include="Template\MetaFiles\DBMetaDataLen.txt" />
+    <Content Include="Template\MetaFiles\DBMetaDataType.txt" />
+    <Content Include="Template\MetaFiles\SqlDbType.txt" />
+    <Content Include="Template\MetaFiles\SqlDbTypeTool.txt" />
+    <Content Include="Template\Template20180001\AzthinkerBll_Class.txt" />
+    <Content Include="Template\Template20180001\AzthinkerBll_Class_Delete.txt" />
+    <Content Include="Template\Template20180001\AzthinkerBll_Class_Fetch.txt" />
+    <Content Include="Template\Template20180001\AzthinkerBll_Class_Insert.txt" />
+    <Content Include="Template\Template20180001\AzthinkerBll_Class_Sp_Cmd.txt" />
+    <Content Include="Template\Template20180001\AzthinkerBll_Class_Sp_Query.txt" />
+    <Content Include="Template\Template20180001\AzthinkerBll_Class_Update.txt" />
+    <Content Include="Template\Template20180001\AzthinkerBll_ListClass.txt" />
+    <Content Include="Template\Template20180001\AzthinkerBll_ListClass_Fetch.txt" />
+    <Content Include="Template\Template20180001\AzthinkerBll_ListClass_Sp_Query.txt" />
+    <Content Include="Template\Template20180001\AzthinkerClassSpRes_WebHandle.txt" />
+    <Content Include="Template\Template20180001\AzthinkerClassSpRes_WebListUIDto.txt" />
+    <Content Include="Template\Template20180001\AzthinkerClassSpRes_WebUIDto.txt" />
+    <Content Include="Template\Template20180001\AzthinkerClass_WebHandle.txt" />
+    <Content Include="Template\Template20180001\AzthinkerClass_WebHandleExec.txt" />
+    <Content Include="Template\Template20180001\AzthinkerClass_WebListUIDto.txt" />
+    <Content Include="Template\Template20180001\AzthinkerClass_WebUIDto.txt" />
+    <Content Include="Template\Template20180001\AzthinkerClass_WebUIExcDto.txt" />
+    <Content Include="Template\Template20180001\AzthinkerControllers.txt" />
+    <Content Include="Template\Template20180001\AzthinkerControllers_Create.txt" />
+    <Content Include="Template\Template20180001\AzthinkerControllers_Delete.txt" />
+    <Content Include="Template\Template20180001\AzthinkerControllers_Detail.txt" />
+    <Content Include="Template\Template20180001\AzthinkerControllers_DropList.txt" />
+    <Content Include="Template\Template20180001\AzthinkerControllers_Edit.txt" />
+    <Content Include="Template\Template20180001\AzthinkerControllers_Index.txt" />
+    <Content Include="Template\Template20180001\AzthinkerControllers_IndexPage.txt" />
+    <Content Include="Template\Template20180001\AzthinkerControllers_IndexPage_SpQuery.txt" />
+    <Content Include="Template\Template20180001\AzthinkerControllers_Index_SpQuery.txt" />
+    <Content Include="Template\Template20180001\AzthinkerControllers_Other.txt" />
+    <Content Include="Template\Template20180001\AzthinkerControllers_SpQuery.txt" />
+    <Content Include="Template\Template20180001\AzthinkerDal_Interface.txt" />
+    <Content Include="Template\Template20180001\AzthinkerDal_Sp_Cmd_Interface.txt" />
+    <Content Include="Template\Template20180001\AzthinkerDal_Sp_Query_Interface.txt" />
+    <Content Include="Template\Template20180001\AzthinkerDal_SQL.txt" />
+    <Content Include="Template\Template20180001\AzthinkerDal_SQL_BatchSave.txt" />
+    <Content Include="Template\Template20180001\AzthinkerDal_SQL_Delete.txt" />
+    <Content Include="Template\Template20180001\AzthinkerDal_SQL_Fetch.txt" />
+    <Content Include="Template\Template20180001\AzthinkerDal_SQL_FetchList.txt" />
+    <Content Include="Template\Template20180001\AzthinkerDal_SQL_Insert.txt" />
+    <Content Include="Template\Template20180001\AzthinkerDal_SQL_Sp.txt" />
+    <Content Include="Template\Template20180001\AzthinkerDal_SQL_SPQuery.txt" />
+    <Content Include="Template\Template20180001\AzthinkerDal_SQL_Update.txt" />
+    <Content Include="Template\Template20180001\AzthinkerView_Create.txt" />
+    <Content Include="Template\Template20180001\AzthinkerView_Delete.txt" />
+    <Content Include="Template\Template20180001\AzthinkerView_Detail.txt" />
+    <Content Include="Template\Template20180001\AzthinkerView_Edit.txt" />
+    <Content Include="Template\Template20180001\AzthinkerView_List.txt" />
+    <Content Include="Template\Template20180001\AzthinkerView_ListPage.txt" />
+    <Content Include="Template\Template20180001\AzthinkerView_ListPageDetails.txt" />
+    <Content Include="Template\Template20180001\AzthinkerView_List_NoLink.txt" />
+    <Content Include="Template\Template20180001\JsHtml\View_List_Scrip_Add.txt" />
+    <Content Include="Template\Template20180001\JsHtml\View_List_Scrip_Del.txt" />
+    <Content Include="Template\Template20180001\JsHtml\View_List_Scrip_Details.txt" />
+    <Content Include="Template\Template20180001\JsHtml\View_List_Scrip_Edit.txt" />
+    <Content Include="Template\Template20180001\PowerHtml\View_List_Op_Do.txt" />
+    <Content Include="Template\Template20180001\PowerHtml\View_List_Op_Do_NoList.txt" />
+    <Content Include="Template\Template20180001\ViewHtml\DisplayField.txt" />
+    <Content Include="Template\Template20180001\ViewHtml\DisplyBoolfield.txt" />
+    <Content Include="Template\Template20180001\ViewHtml\EditorBoolField.txt" />
+    <Content Include="Template\Template20180001\ViewHtml\EditorDisplyField.txt" />
+    <Content Include="Template\Template20180001\ViewHtml\EditorField.txt" />
+    <Content Include="Template\Template20180001\ViewHtml\EditorSelectField.txt" />
+    <Content Include="Template\Template20180001\ViewHtml\EditorTxtField.txt" />
+    <Content Include="Template\Template20180001\ViewHtml\View_Jquery_Validate.txt" />
+    <Content Include="Template\Template20180001\ViewHtml\View_Linkto.txt" />
+    <Content Include="Template\Template20180001\ViewHtml\View_List_IndexLink.txt" />
+    <Content Include="Template\Template20180001\ViewHtml\View_List_Page_Content.txt" />
+    <Content Include="Template\Template20180001\ViewHtml\View_List_Page_DetailsPage.txt" />
+    <Content Include="Template\Template20180001\ViewHtml\View_Other_Html.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

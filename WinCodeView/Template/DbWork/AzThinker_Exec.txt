@@ -1,0 +1,6 @@
+Create PROCEDURE [dbo].[AzThinker_Exec]
+  @ExecString nvarchar(max)
+AS
+BEGIN
+	exec(@ExecString)
+END

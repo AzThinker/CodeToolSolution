@@ -1,0 +1,14 @@
+[BizEmailExpression()]//电子邮件格式检查
+[BizUserNameExpression()]//用户名称格式检查
+[BizPassWordExpression()]//口令格式检查
+[BizDateExpression()]//日期格式检查
+[BizStringIsUrl()]//网址验证
+[BizStringIsMobile()]//验证手机号
+[BizStringIsPhone()]//验证电话
+[BizStringIsQQ()]//验证QQ
+[BizStringIsIP()]//验证IP
+[BizStringIsIDCard()]//验证身份证是否有效
+[BizStringIsPostCode()]//验证邮政编码
+[BizStringIsChinese()]//验证中文
+[ScaffoldColumn(false)]//自动生成页面不显示
+[Remote("action", "controllers")]//远程验证
