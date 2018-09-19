@@ -1,9 +1,9 @@
-﻿using MetaWorkLib.Config;
-using MetaWorkLib.Utils;
-using Microsoft.Data.ConnectionUI;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using MetaWorkLib.Config;
+using MetaWorkLib.Utils;
+using Microsoft.Data.ConnectionUI;
 
 namespace WinCodeView
 {
@@ -47,9 +47,9 @@ namespace WinCodeView
             if (DataConnectionDialog.Show(dialog, this) == DialogResult.OK)
             {
                 AzBaseSet baseSet = AzNormalSet.GetAzNormalSet().AzBase;//  AzBaseSet.GetBaseSet();
-                baseSet.AzConnectionString= dialog.ConnectionString;
+                baseSet.AzConnectionString = dialog.ConnectionString;
                 AzBaseSet.AzSetBaseCnns(baseSet);
-                //txtConnectionString.Text = dialog.ConnectionString;
+                txtConnectionString.Text = dialog.ConnectionString;
                 //AzDataSourceSet.AzSetConnectionString(dialog.ConnectionString);
             }
         }
