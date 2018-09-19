@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AzCustomMateManage));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tspButtonAdd = new System.Windows.Forms.ToolStripButton();
@@ -86,11 +86,12 @@
             this.tspBtnSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripSeparator();
             this.treeViewBusiness = new System.Windows.Forms.TreeView();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tspMenuCreateDBTabel = new System.Windows.Forms.ToolStripMenuItem();
             this.tspMenuCreateAllDBTabel = new System.Windows.Forms.ToolStripMenuItem();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.about1 = new WinCodeView.UI.about();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -100,8 +101,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.azMetaTableEntityBindingSource)).BeginInit();
             this.panel3.SuspendLayout();
             this.toolStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.contextMenuStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -114,7 +115,7 @@
             this.tspButtonClose});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1334, 40);
+            this.toolStrip1.Size = new System.Drawing.Size(1467, 40);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -165,13 +166,14 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.about1);
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.treeViewBusiness);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 40);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1334, 572);
+            this.panel1.Size = new System.Drawing.Size(1467, 688);
             this.panel1.TabIndex = 3;
             // 
             // dataGridView1
@@ -179,14 +181,14 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AutoGenerateColumns = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Az_NoCol,
@@ -205,7 +207,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(287, 128);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(1047, 444);
+            this.dataGridView1.Size = new System.Drawing.Size(1180, 560);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValidated);
@@ -215,8 +217,8 @@
             // 
             // Az_NoCol
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Az_NoCol.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Az_NoCol.DefaultCellStyle = dataGridViewCellStyle2;
             this.Az_NoCol.Frozen = true;
             this.Az_NoCol.HeaderText = "序号";
             this.Az_NoCol.Name = "Az_NoCol";
@@ -259,9 +261,9 @@
             // showOrderDataGridViewTextBoxColumn
             // 
             this.showOrderDataGridViewTextBoxColumn.DataPropertyName = "ShowOrder";
-            dataGridViewCellStyle6.Format = "N0";
-            dataGridViewCellStyle6.NullValue = null;
-            this.showOrderDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.showOrderDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.showOrderDataGridViewTextBoxColumn.HeaderText = "显示顺序";
             this.showOrderDataGridViewTextBoxColumn.Name = "showOrderDataGridViewTextBoxColumn";
             // 
@@ -357,7 +359,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(287, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1047, 128);
+            this.panel2.Size = new System.Drawing.Size(1180, 128);
             this.panel2.TabIndex = 2;
             // 
             // textRemark
@@ -458,7 +460,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 90);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1047, 38);
+            this.panel3.Size = new System.Drawing.Size(1180, 38);
             this.panel3.TabIndex = 1;
             // 
             // toolStrip2
@@ -481,7 +483,7 @@
             this.toolStripButton2});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(1047, 40);
+            this.toolStrip2.Size = new System.Drawing.Size(1180, 40);
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -617,22 +619,9 @@
             this.treeViewBusiness.Location = new System.Drawing.Point(0, 0);
             this.treeViewBusiness.Name = "treeViewBusiness";
             this.treeViewBusiness.SelectedImageIndex = 0;
-            this.treeViewBusiness.Size = new System.Drawing.Size(287, 572);
+            this.treeViewBusiness.Size = new System.Drawing.Size(287, 688);
             this.treeViewBusiness.TabIndex = 1;
             this.treeViewBusiness.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewBusiness_NodeMouseClick);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "tick.png");
-            this.imageList1.Images.SetKeyName(1, "tables.png");
-            this.imageList1.Images.SetKeyName(2, "tables-stacks.png");
-            this.imageList1.Images.SetKeyName(3, "table-select.png");
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
             // 
             // contextMenuStrip2
             // 
@@ -640,7 +629,7 @@
             this.tspMenuCreateDBTabel,
             this.tspMenuCreateAllDBTabel});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(209, 70);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(209, 48);
             this.contextMenuStrip2.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip2_Opening);
             // 
             // tspMenuCreateDBTabel
@@ -658,9 +647,30 @@
             this.tspMenuCreateAllDBTabel.Size = new System.Drawing.Size(208, 22);
             this.tspMenuCreateAllDBTabel.Text = "所有被选创建成数据库表";
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "tick.png");
+            this.imageList1.Images.SetKeyName(1, "tables.png");
+            this.imageList1.Images.SetKeyName(2, "tables-stacks.png");
+            this.imageList1.Images.SetKeyName(3, "table-select.png");
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // about1
+            // 
+            this.about1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.about1.Location = new System.Drawing.Point(287, 648);
+            this.about1.Name = "about1";
+            this.about1.Size = new System.Drawing.Size(1180, 40);
+            this.about1.TabIndex = 4;
+            // 
             // AzCustomMateManage
             // 
-            this.ClientSize = new System.Drawing.Size(1334, 612);
+            this.ClientSize = new System.Drawing.Size(1467, 728);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "AzCustomMateManage";
@@ -679,8 +689,8 @@
             this.panel3.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.contextMenuStrip2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -745,5 +755,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem tspMenuCreateDBTabel;
         private System.Windows.Forms.ToolStripMenuItem tspMenuCreateAllDBTabel;
+        private UI.about about1;
     }
 }

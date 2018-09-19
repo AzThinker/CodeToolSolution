@@ -43,6 +43,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.about1 = new WinCodeView.UI.about();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -59,6 +60,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.about1);
             this.groupBox1.Controls.Add(this.txtConnectionString);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -92,7 +94,7 @@
             this.数据库操作ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(781, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(789, 25);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -111,33 +113,33 @@
             // ACM_DBCreateOp
             // 
             this.ACM_DBCreateOp.Name = "ACM_DBCreateOp";
-            this.ACM_DBCreateOp.Size = new System.Drawing.Size(180, 22);
+            this.ACM_DBCreateOp.Size = new System.Drawing.Size(172, 22);
             this.ACM_DBCreateOp.Text = "初始工具用数据";
             this.ACM_DBCreateOp.Click += new System.EventHandler(this.ACM_DBCreateOp_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(169, 6);
             // 
             // ACM_DBClearData
             // 
             this.ACM_DBClearData.Name = "ACM_DBClearData";
-            this.ACM_DBClearData.Size = new System.Drawing.Size(180, 22);
+            this.ACM_DBClearData.Size = new System.Drawing.Size(172, 22);
             this.ACM_DBClearData.Text = "清除已生成元数据";
             this.ACM_DBClearData.Click += new System.EventHandler(this.ACM_DBClearData_Click);
             // 
             // ACM_DBIniData
             // 
             this.ACM_DBIniData.Name = "ACM_DBIniData";
-            this.ACM_DBIniData.Size = new System.Drawing.Size(180, 22);
+            this.ACM_DBIniData.Size = new System.Drawing.Size(172, 22);
             this.ACM_DBIniData.Text = "初始元数据值";
             this.ACM_DBIniData.Click += new System.EventHandler(this.ACM_DBIniData_Click);
             // 
             // ACM_Exist
             // 
             this.ACM_Exist.Name = "ACM_Exist";
-            this.ACM_Exist.Size = new System.Drawing.Size(180, 22);
+            this.ACM_Exist.Size = new System.Drawing.Size(172, 22);
             this.ACM_Exist.Text = "退出";
             this.ACM_Exist.Click += new System.EventHandler(this.ACM_Exist_Click);
             // 
@@ -171,11 +173,18 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.ACM_DBIniData_Click);
             // 
+            // about1
+            // 
+            this.about1.Location = new System.Drawing.Point(156, 16);
+            this.about1.Name = "about1";
+            this.about1.Size = new System.Drawing.Size(558, 40);
+            this.about1.TabIndex = 2;
+            // 
             // AzDataBSetEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(781, 286);
+            this.ClientSize = new System.Drawing.Size(789, 304);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -213,5 +222,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private UI.about about1;
     }
 }

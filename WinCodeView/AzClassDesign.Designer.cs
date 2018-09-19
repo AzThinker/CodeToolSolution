@@ -66,6 +66,7 @@
             this.azCdgnMasterDisplay1 = new WinCodeView.UI.AzCdgnMasterDisplay();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.about1 = new WinCodeView.UI.about();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -87,7 +88,7 @@
             this.mspOtherHandle});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1437, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1478, 25);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -316,9 +317,10 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.about1);
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Panel2.Controls.Add(this.azCdgnMasterDisplay1);
-            this.splitContainer1.Size = new System.Drawing.Size(1437, 707);
+            this.splitContainer1.Size = new System.Drawing.Size(1478, 725);
             this.splitContainer1.SplitterDistance = 291;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 2;
@@ -329,7 +331,7 @@
             this.azCdgnDBSchema1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.azCdgnDBSchema1.Location = new System.Drawing.Point(0, 0);
             this.azCdgnDBSchema1.Name = "azCdgnDBSchema1";
-            this.azCdgnDBSchema1.Size = new System.Drawing.Size(291, 707);
+            this.azCdgnDBSchema1.Size = new System.Drawing.Size(291, 725);
             this.azCdgnDBSchema1.TabIndex = 0;
             this.azCdgnDBSchema1.TreeNodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.azCdgnDBSchema1_TreeNodeMouseClick);
             this.azCdgnDBSchema1.Atk_MetaDataExportXLS += new System.EventHandler(this.azCdgnDBSchema1_Atk_MetaDataExportXLS);
@@ -357,8 +359,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.azCdgnClassProperty1);
             this.splitContainer2.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.splitContainer2.Size = new System.Drawing.Size(1143, 627);
-            this.splitContainer2.SplitterDistance = 879;
+            this.splitContainer2.Size = new System.Drawing.Size(1184, 645);
+            this.splitContainer2.SplitterDistance = 910;
             this.splitContainer2.TabIndex = 1;
             // 
             // azCdgnDetail1
@@ -367,7 +369,7 @@
             this.azCdgnDetail1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.azCdgnDetail1.Location = new System.Drawing.Point(0, 0);
             this.azCdgnDetail1.Name = "azCdgnDetail1";
-            this.azCdgnDetail1.Size = new System.Drawing.Size(879, 627);
+            this.azCdgnDetail1.Size = new System.Drawing.Size(910, 645);
             this.azCdgnDetail1.TabIndex = 0;
             // 
             // azCdgnClassProperty1
@@ -376,7 +378,7 @@
             this.azCdgnClassProperty1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.azCdgnClassProperty1.Location = new System.Drawing.Point(0, 0);
             this.azCdgnClassProperty1.Name = "azCdgnClassProperty1";
-            this.azCdgnClassProperty1.Size = new System.Drawing.Size(260, 627);
+            this.azCdgnClassProperty1.Size = new System.Drawing.Size(270, 645);
             this.azCdgnClassProperty1.TabIndex = 0;
             this.azCdgnClassProperty1.OnMasterSaveNotification += new System.Action(this.azCdgnClassProperty1_OnMasterSaveNotification);
             this.azCdgnClassProperty1.Load += new System.EventHandler(this.azCdgnClassProperty1_Load);
@@ -388,7 +390,7 @@
             this.azCdgnMasterDisplay1.Location = new System.Drawing.Point(0, 0);
             this.azCdgnMasterDisplay1.MinimumSize = new System.Drawing.Size(628, 80);
             this.azCdgnMasterDisplay1.Name = "azCdgnMasterDisplay1";
-            this.azCdgnMasterDisplay1.Size = new System.Drawing.Size(1143, 80);
+            this.azCdgnMasterDisplay1.Size = new System.Drawing.Size(1184, 80);
             this.azCdgnMasterDisplay1.TabIndex = 0;
             this.azCdgnMasterDisplay1.Atk_LookCurrentDbData += new System.EventHandler(this.azCdgnMasterDisplay1_Atk_LookCurrentDbData);
             // 
@@ -397,11 +399,18 @@
             this.saveFileDialog1.DefaultExt = "txt";
             this.saveFileDialog1.Filter = "txt(*.txt)|";
             // 
+            // about1
+            // 
+            this.about1.Location = new System.Drawing.Point(628, 4);
+            this.about1.Name = "about1";
+            this.about1.Size = new System.Drawing.Size(544, 40);
+            this.about1.TabIndex = 2;
+            // 
             // AzClassDesign
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1437, 732);
+            this.ClientSize = new System.Drawing.Size(1478, 750);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -464,5 +473,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem0501;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private UI.about about1;
     }
 }

@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textSaveCodeFileFloder = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.button_templatefolder = new System.Windows.Forms.Button();
             this.textAzTemplateFolder = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -58,9 +61,7 @@
             this.ACM_Close = new System.Windows.Forms.ToolStripMenuItem();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.textSaveCodeFileFloder = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.about1 = new WinCodeView.UI.about();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -69,6 +70,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.about1);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.textSaveCodeFileFloder);
             this.groupBox1.Controls.Add(this.label9);
@@ -92,9 +94,35 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 25);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(850, 302);
+            this.groupBox1.Size = new System.Drawing.Size(872, 361);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(602, 202);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(31, 23);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "...";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textSaveCodeFileFloder
+            // 
+            this.textSaveCodeFileFloder.Location = new System.Drawing.Point(119, 202);
+            this.textSaveCodeFileFloder.Name = "textSaveCodeFileFloder";
+            this.textSaveCodeFileFloder.Size = new System.Drawing.Size(481, 21);
+            this.textSaveCodeFileFloder.TabIndex = 18;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(24, 205);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(89, 12);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "代码保存位置：";
             // 
             // button_templatefolder
             // 
@@ -241,9 +269,9 @@
             this.panel1.Controls.Add(this.buttonSave);
             this.panel1.Controls.Add(this.buttonReset);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 268);
+            this.panel1.Location = new System.Drawing.Point(0, 327);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(850, 59);
+            this.panel1.Size = new System.Drawing.Size(872, 59);
             this.panel1.TabIndex = 1;
             // 
             // buttonClose
@@ -282,7 +310,7 @@
             this.配置操作ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(850, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(872, 25);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -325,37 +353,18 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // button1
+            // about1
             // 
-            this.button1.Location = new System.Drawing.Point(602, 202);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(31, 23);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // textSaveCodeFileFloder
-            // 
-            this.textSaveCodeFileFloder.Location = new System.Drawing.Point(119, 202);
-            this.textSaveCodeFileFloder.Name = "textSaveCodeFileFloder";
-            this.textSaveCodeFileFloder.Size = new System.Drawing.Size(481, 21);
-            this.textSaveCodeFileFloder.TabIndex = 18;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(24, 205);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(89, 12);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "代码保存位置：";
+            this.about1.Location = new System.Drawing.Point(56, 252);
+            this.about1.Name = "about1";
+            this.about1.Size = new System.Drawing.Size(740, 40);
+            this.about1.TabIndex = 20;
             // 
             // AzBaseSetEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 327);
+            this.ClientSize = new System.Drawing.Size(872, 386);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
@@ -409,5 +418,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textSaveCodeFileFloder;
         private System.Windows.Forms.Label label9;
+        private UI.about about1;
     }
 }
