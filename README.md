@@ -24,17 +24,17 @@ ATK 设计框架辅助工具-代码生成器
     </div>
 3、生成的案例部分显示
 
- ![image](https://raw.githubusercontent.com/AzThinker/CodeToolSolution/master/WinCodeView/Remark/201809190933294.png）
+ ![image](https://raw.githubusercontent.com/AzThinker/CodeToolSolution/master/WinCodeView/Remark/201809190933294.jpg)
 
 其他工作：
 1、数据库，数据库使用的是标准Northwind数据库，不过原生的Northwind数据库不支持中文，需要更改其字符集。
 
 2、使用工具对Northwind数据库进行分析；
-https://github.com/AzThinker/CodeToolSolution/raw/master/WinCodeView/Remark/201809190933292.png
-https://raw.githubusercontent.com/AzThinker/CodeToolSolution/master/WinCodeView/Remark/201809190933291.jpg
+ ![image](https://raw.githubusercontent.com/AzThinker/CodeToolSolution/master/WinCodeView/Remark/201809190933291.jpg)
+ 
 3、生在代码。
 
-https://github.com/AzThinker/CodeToolSolution/tree/master/WinCodeView/Remark/201809190933293.png
+ ![image](https://raw.githubusercontent.com/AzThinker/CodeToolSolution/master/WinCodeView/Remark/201809190933293.jpg)
 
 ----
 ATK
