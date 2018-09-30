@@ -30,6 +30,7 @@ ATK 设计框架辅助工具-代码生成器
 1、数据库，数据库使用的是标准Northwind数据库，不过原生的Northwind数据库不支持中文，需要更改其字符集。
 
 2、使用工具对Northwind数据库进行分析；
+https://github.com/AzThinker/CodeToolSolution/raw/master/WinCodeView/Remark/201809190933292.png
 https://github.com/AzThinker/CodeToolSolution/tree/master/WinCodeView/Remark/201809190933291.jpg
 3、生在代码。
 
