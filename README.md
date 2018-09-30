@@ -31,7 +31,7 @@ ATK 设计框架辅助工具-代码生成器
 
 2、使用工具对Northwind数据库进行分析；
 https://github.com/AzThinker/CodeToolSolution/raw/master/WinCodeView/Remark/201809190933292.png
-https://github.com/AzThinker/CodeToolSolution/tree/master/WinCodeView/Remark/201809190933291.jpg
+https://raw.githubusercontent.com/AzThinker/CodeToolSolution/master/WinCodeView/Remark/201809190933291.jpg
 3、生在代码。
 
 https://github.com/AzThinker/CodeToolSolution/tree/master/WinCodeView/Remark/201809190933293.png
