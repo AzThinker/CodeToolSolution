@@ -88,6 +88,7 @@ namespace WinCodeView
                 if (IsNew)
                 {
                     result = AzMetaCustomCloumHandle.Handle().Insert(entity).Id;
+                    IsNew = false;
 
                 }
                 else

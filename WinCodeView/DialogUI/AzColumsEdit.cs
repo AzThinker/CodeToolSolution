@@ -52,6 +52,7 @@ namespace WinCodeView
                 (dataSource.DataSource as DataTable).Rows.Add(row);
                 dataSource.MoveLast();
                 columsEdit.IsNew = true;
+                
             }
 
             columsEdit.bindingSource1 = dataSource;
@@ -97,6 +98,7 @@ namespace WinCodeView
                 if (IsNew)
                 {
                     result = AzMetaCloumHandle.Handle().Insert(entity).Id;
+                    IsNew = false;
 
                 }
                 else
