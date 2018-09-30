@@ -459,6 +459,14 @@
     <None Include="Resources\arrow-retweet.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Remark\20180919093329.jpg" />
+    <Content Include="Remark\20180919093329.png" />
+    <Content Include="Remark\201809190933291.jpg" />
+    <Content Include="Remark\201809190933291.png" />
+    <Content Include="Remark\201809190933292.jpg" />
+    <Content Include="Remark\201809190933292.png" />
+    <Content Include="Remark\201809190933293.png" />
+    <Content Include="Remark\201809190933294.png" />
     <Content Include="Template\DbWork\AzThinker_Exec.txt" />
     <Content Include="Template\DbWork\AzThinker_UpdateRemark.txt" />
     <Content Include="Template\DbWork\Az_CustomMetaDataIni.txt" />
