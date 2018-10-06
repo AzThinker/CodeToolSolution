@@ -1,0 +1,19 @@
+
+@using <$Ai_Project_NameSpace>.UIServer.<$Ai_ProjectName>
+@model <$Ai_Bll_ClassName>WebDto
+@{
+   ViewBag.Title = "删除"+<$Ai_Bll_ClassName>WebDto.DisplayDescription;
+ }
+
+<h2>@string.Concat(@<$Ai_Bll_ClassName>WebDto.DisplayDescription,"删除")</h2>
+@using (Html.BeginForm("Delete","<$Ai_Folder>")) {
+  @Html.ValidationSummary(true)
+   <fieldset>
+    <legend>@<$Ai_Bll_ClassName>WebDto.DisplayDescription</legend>
+       <$Ai_View_Detail_FieldSet>
+       <button type="submit">删除</button>
+    </fieldset>
+ }
+ @Html.ActionLink("返回列表", "<$Ai_Goto_Index>")  
+
+

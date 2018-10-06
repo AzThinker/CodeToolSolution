@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using WinCodeView.UI;
 
 namespace WinCodeView.CodeTools
@@ -76,6 +77,18 @@ namespace WinCodeView.CodeTools
 
             return (bool)props.GetValue(azCreateItem);
         }
+
+
+        public static AzProjectInformation GetProjectInformation()
+        {
+            AzProjectInformation azProjectInformation = new AzProjectInformation();
+            JavaScriptSerializer js = new JavaScriptSerializer();
+
+            string infoconfig = CodeHandle.GetTemplateConfig();
+
+            return js.Deserialize<AzProjectInformation>(infoconfig);
+        }
+
         public static AzCreateItem GetAzCreateItem(AzClassCreatProperty creatProperty)
         {
             AzCreateItem createItem = new AzCreateItem();
@@ -83,16 +96,19 @@ namespace WinCodeView.CodeTools
             {
                 return createItem;
             }
+
+            var azprojectinfo = GetProjectInformation();
+
             if (creatProperty.ObjPresentation.ObjDataType == ObjDataTypeEnum.atk_tables ||
                    creatProperty.ObjPresentation.ObjDataType == ObjDataTypeEnum.atk_customTables)
             {
-                createItem.AzthinkerDal_Interface = true;
-                createItem.AzthinkerDal_SQL = true;
-                createItem.AzthinkerBll_Class = true;
-                createItem.AzthinkerBll_ListClass = creatProperty.HasBussniesList;
-                createItem.AzthinkerClass_WebUIDto = true;
-                createItem.AzthinkerClass_WebListUIDto = true;
-                createItem.AzthinkerClass_WebHandle = true;
+                createItem.AzthinkerDal_Interface = azprojectinfo.HasDalInterface;
+                createItem.AzthinkerDal_SQL = azprojectinfo.HasDalLayer;
+                createItem.AzthinkerBll_Class = azprojectinfo.HasBll;
+                createItem.AzthinkerBll_ListClass = creatProperty.HasBussniesList && azprojectinfo.HasBllList;
+                createItem.AzthinkerClass_WebUIDto = azprojectinfo.HasWebUIDto;
+                createItem.AzthinkerClass_WebListUIDto = azprojectinfo.HasWebListUIDto;
+                createItem.AzthinkerClass_WebHandle = azprojectinfo.HasWebListUIHandle;
                 createItem.AzthinkerControllers = true;
                 createItem.AzthinkerView_Create = creatProperty.HasControllerAdd;
                 createItem.AzthinkerView_Delete = creatProperty.HasControllerDelete;
@@ -107,13 +123,13 @@ namespace WinCodeView.CodeTools
                  creatProperty.ObjPresentation.ObjDataType == ObjDataTypeEnum.atk_customViews) && (!creatProperty.ObjPresentation.IsSchemaForOther))
             {
 
-                createItem.AzthinkerDal_Interface = true;
-                createItem.AzthinkerDal_SQL = true;
-                createItem.AzthinkerBll_Class = true;
-                createItem.AzthinkerBll_ListClass = creatProperty.HasBussniesList;
-                createItem.AzthinkerClass_WebUIDto = true;
-                createItem.AzthinkerClass_WebListUIDto = true;
-                createItem.AzthinkerClass_WebHandle = true;
+                createItem.AzthinkerDal_Interface = azprojectinfo.HasDalInterface;
+                createItem.AzthinkerDal_SQL = azprojectinfo.HasDalLayer;
+                createItem.AzthinkerBll_Class = azprojectinfo.HasBll;
+                createItem.AzthinkerBll_ListClass = creatProperty.HasBussniesList && azprojectinfo.HasBllList;
+                createItem.AzthinkerClass_WebUIDto = azprojectinfo.HasWebUIDto;
+                createItem.AzthinkerClass_WebListUIDto = azprojectinfo.HasWebListUIDto;
+                createItem.AzthinkerClass_WebHandle = azprojectinfo.HasWebListUIHandle;
                 createItem.AzthinkerControllers = true;
                 createItem.AzthinkerView_Create = creatProperty.HasControllerAdd && !(string.IsNullOrWhiteSpace(creatProperty.ObjPresentation.UpdateTableName));
                 createItem.AzthinkerView_Delete = creatProperty.HasControllerDelete && !(string.IsNullOrWhiteSpace(creatProperty.ObjPresentation.UpdateTableName));
@@ -126,22 +142,22 @@ namespace WinCodeView.CodeTools
             }
             else if (creatProperty.ObjPresentation.ObjDataType == ObjDataTypeEnum.atk_FuncstoredProcedure)
             {
-                createItem.AzthinkerDal_Interface = true;
-                createItem.AzthinkerDal_SQL = true;
-                createItem.AzthinkerBll_Class = true;
-                createItem.AzthinkerClass_WebUIDto = true;
-                createItem.AzthinkerClass_WebHandle = true;
+                createItem.AzthinkerDal_Interface = azprojectinfo.HasDalInterface;
+                createItem.AzthinkerDal_SQL = azprojectinfo.HasDalLayer;
+                createItem.AzthinkerBll_Class = azprojectinfo.HasBll;
+                createItem.AzthinkerClass_WebUIDto = azprojectinfo.HasWebUIDto;
+                createItem.AzthinkerClass_WebHandle = azprojectinfo.HasWebListUIHandle;
 
             }
             else if (creatProperty.ObjPresentation.ObjDataType == ObjDataTypeEnum.atk_QuerystoredProcedure)
             {
-                createItem.AzthinkerDal_Interface = true;
-                createItem.AzthinkerDal_SQL = true;
-                createItem.AzthinkerBll_Class = true;
-                createItem.AzthinkerBll_ListClass = true;
-                createItem.AzthinkerClass_WebUIDto = true;
-                createItem.AzthinkerClass_WebHandle = true;
-                createItem.AzthinkerClass_WebListUIDto = true;
+                createItem.AzthinkerDal_Interface = azprojectinfo.HasDalInterface;
+                createItem.AzthinkerDal_SQL = azprojectinfo.HasDalLayer;
+                createItem.AzthinkerBll_Class = azprojectinfo.HasBll;
+                createItem.AzthinkerBll_ListClass = azprojectinfo.HasBllList;
+                createItem.AzthinkerClass_WebUIDto = azprojectinfo.HasWebUIDto;
+                createItem.AzthinkerClass_WebListUIDto = azprojectinfo.HasWebListUIDto;
+                createItem.AzthinkerClass_WebHandle = azprojectinfo.HasWebListUIHandle;
                 createItem.AzthinkerControllers = true;
                 createItem.AzthinkerView_Index = creatProperty.HasControllerList && !creatProperty.HasControllerAsynPage;
                 createItem.AzthinkerView_IndexPage = creatProperty.HasControllerList && creatProperty.HasControllerAsynPage;

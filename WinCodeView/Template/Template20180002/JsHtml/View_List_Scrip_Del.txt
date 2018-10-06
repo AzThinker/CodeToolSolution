@@ -1,0 +1,36 @@
+  function deleterow(<$Ai_View_Call_Scrip_Parameters>, msg)
+    {
+        $("#dialog-contentmsg").empty();
+        $("#dialog-contentmsg").append("<p><span class='ui-icon ui-icon-notice' style='float:left; margin:0 7px 50px 0;'></span><span id='dialog-noticemessage-content'></span></p>");
+        $("#dialog-noticemessage-content").append("确定要删除 " + msg + " 吗?");
+        $("#dialog-contentmsg").dialog({
+            title: "警告!删除数据",
+            width:300,
+            modal: true,
+            buttons: {
+                确定删除: function ()
+                {
+                    $.post("/<$Ai_Bll_ClassName>/Deletecfm", { <$Ai_View_Scrip_Data_Parameters> }, function (data)
+                    {
+                        if (data == "OK")
+                        {
+                            var ai_del_id = <$Ai_View_Table_Body_Del_Sign>;
+                            $(ai_del_id).remove();
+                            $("#dialog-contentmsg").dialog("close");
+                        }
+                        else
+                        {
+                            $("#dialog-contentmsg").dialog("option", { buttons: [{ text: "关闭", click: function () { $(this).dialog("close"); } }] });
+                            $("#dialog-contentmsg").empty();
+                            $("#dialog-contentmsg").append("删除 " + msg + " 失败,请重新操作");
+                        }
+                    });
+
+                },
+                取消: function ()
+                {
+                    $(this).dialog("close");
+                }
+            }
+        });
+    }

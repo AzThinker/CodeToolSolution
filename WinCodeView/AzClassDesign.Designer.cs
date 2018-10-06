@@ -60,13 +60,13 @@
             this.mspOtherHandle = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.azCdgnDBSchema1 = new WinCodeView.UI.AzCdgnDBSchema();
+            this.about1 = new WinCodeView.UI.about();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.azCdgnDetail1 = new WinCodeView.UI.AzCdgnDetail();
             this.azCdgnClassProperty1 = new WinCodeView.UI.AzCdgnClassProperty();
             this.azCdgnMasterDisplay1 = new WinCodeView.UI.AzCdgnMasterDisplay();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.about1 = new WinCodeView.UI.about();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -111,20 +111,20 @@
             this.toolStripMenuItem0102,
             this.toolStripMenuItem0201});
             this.toolStripMenuItem02.Name = "toolStripMenuItem02";
-            this.toolStripMenuItem02.Size = new System.Drawing.Size(139, 22);
+            this.toolStripMenuItem02.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem02.Text = "数据层";
             // 
             // toolStripMenuItem0102
             // 
             this.toolStripMenuItem0102.Name = "toolStripMenuItem0102";
-            this.toolStripMenuItem0102.Size = new System.Drawing.Size(160, 22);
+            this.toolStripMenuItem0102.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem0102.Text = "数据层访问接口";
             this.toolStripMenuItem0102.Click += new System.EventHandler(this.toolStripMenuItem0102_Click);
             // 
             // toolStripMenuItem0201
             // 
             this.toolStripMenuItem0201.Name = "toolStripMenuItem0201";
-            this.toolStripMenuItem0201.Size = new System.Drawing.Size(160, 22);
+            this.toolStripMenuItem0201.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem0201.Text = "数据库访问类";
             this.toolStripMenuItem0201.Click += new System.EventHandler(this.toolStripMenuItem0201_Click);
             // 
@@ -135,7 +135,7 @@
             this.toolStripSeparator2,
             this.toolStripMenuItem0303});
             this.toolStripMenuItem03.Name = "toolStripMenuItem03";
-            this.toolStripMenuItem03.Size = new System.Drawing.Size(139, 22);
+            this.toolStripMenuItem03.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem03.Text = "业务层";
             // 
             // toolStripMenuItem0301
@@ -164,7 +164,7 @@
             this.toolStripMenuItem0402,
             this.toolStripMenuItem0403});
             this.toolStripMenuItem04.Name = "toolStripMenuItem04";
-            this.toolStripMenuItem04.Size = new System.Drawing.Size(139, 22);
+            this.toolStripMenuItem04.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem04.Text = "Web服务层";
             // 
             // toolStripMenuItem0401
@@ -202,7 +202,7 @@
             this.toolStripMenuItem0606,
             this.toolStripMenuItem0607});
             this.toolStripMenuItem06.Name = "toolStripMenuItem06";
-            this.toolStripMenuItem06.Size = new System.Drawing.Size(139, 22);
+            this.toolStripMenuItem06.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem06.Text = "Web前端";
             // 
             // toolStripMenuItem0501
@@ -274,12 +274,12 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(136, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripMenuItem07ToolStripMenuItem
             // 
             this.toolStripMenuItem07ToolStripMenuItem.Name = "toolStripMenuItem07ToolStripMenuItem";
-            this.toolStripMenuItem07ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.toolStripMenuItem07ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem07ToolStripMenuItem.Text = "退出";
             this.toolStripMenuItem07ToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem07ToolStripMenuItem_Click);
             // 
@@ -343,6 +343,13 @@
             this.azCdgnDBSchema1.Atk_BatchCreateCode += new System.EventHandler(this.azCdgnDBSchema1_Atk_BatchCreateCode);
             this.azCdgnDBSchema1.Load += new System.EventHandler(this.azCdgnDBSchema1_Load);
             // 
+            // about1
+            // 
+            this.about1.Location = new System.Drawing.Point(628, 4);
+            this.about1.Name = "about1";
+            this.about1.Size = new System.Drawing.Size(544, 40);
+            this.about1.TabIndex = 2;
+            // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -399,13 +406,6 @@
             this.saveFileDialog1.DefaultExt = "txt";
             this.saveFileDialog1.Filter = "txt(*.txt)|";
             // 
-            // about1
-            // 
-            this.about1.Location = new System.Drawing.Point(628, 4);
-            this.about1.Name = "about1";
-            this.about1.Size = new System.Drawing.Size(544, 40);
-            this.about1.TabIndex = 2;
-            // 
             // AzClassDesign
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -418,6 +418,7 @@
             this.Name = "AzClassDesign";
             this.Text = "业务设计";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AzClassDesign_FormClosed);
             this.Load += new System.EventHandler(this.AzClassDesign_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

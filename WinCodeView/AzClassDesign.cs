@@ -86,15 +86,29 @@ namespace WinCodeView
 
             azCdgnClassProperty1.SetSelectedObject();
 
-            JavaScriptSerializer js = new JavaScriptSerializer();
+ 
 
-            string infoconfig = CodeHandle.GetTemplateConfig();
-
-            azProjectInformation = js.Deserialize<AzProjectInformation>(infoconfig);
+            azProjectInformation = AzCreateItem.GetProjectInformation();
             if (azProjectInformation != null)
             {
                 toolStripMenuItem0102.Visible = azProjectInformation.HasDalInterface;
+                toolStripMenuItem0201.Visible = azProjectInformation.HasDalLayer;
+                toolStripMenuItem02.Visible = azProjectInformation.HasDalInterface || azProjectInformation.HasDalLayer;
+
+                toolStripMenuItem0301.Visible = azProjectInformation.HasBll;
+                toolStripMenuItem0303.Visible = azProjectInformation.HasBllList;
+                toolStripMenuItem03.Visible = azProjectInformation.HasBll || azProjectInformation.HasBllList;
+
+
+                toolStripMenuItem0401.Visible = azProjectInformation.HasWebUIDto;
+                toolStripMenuItem0402.Visible = azProjectInformation.HasWebListUIDto;
+                toolStripMenuItem0403.Visible = azProjectInformation.HasWebListUIHandle;
+                toolStripMenuItem04.Visible = azProjectInformation.HasWebUIDto || azProjectInformation.HasWebListUIDto || azProjectInformation.HasWebListUIHandle;
+
             }
+
+
+
 
             azCdgnDBSchema1.GetContextMenu().Items.Insert(0, mspCreateCode);
 
@@ -594,5 +608,10 @@ namespace WinCodeView
 
         }
         #endregion
+
+        private void AzClassDesign_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }

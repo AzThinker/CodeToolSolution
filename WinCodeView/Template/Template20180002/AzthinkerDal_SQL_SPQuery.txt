@@ -1,0 +1,93 @@
+using Autofac;
+using Atk.DataPortal;
+using Atk.DataPortal.Core;
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Text;
+using Module = Autofac.Module;
+using <$Ai_Project_NameSpace>.BLL.<$Ai_ProjectName>;
+
+// <summary>
+// SQL Server 2008 数据访问层
+// 不支持SQL Server 2000
+// </summary>
+namespace <$Ai_Project_NameSpace>.DB.<$Ai_ProjectName>
+{
+
+    /// <summary>
+    /// 此处实现 Autofac Module用于《<$Ai_Object_ChineseName>》相关类注册用,
+    /// 此处只注册业务类。
+    /// 由于WCF的存在,业务层,数据访问层可能和IIS布署不在同一台服务器上
+    /// 因而其他层的类,不应在此出现。
+    /// </summary>
+    public class <$Ai_Bll_ClassName>_Module : Module
+    {
+        protected override void Load(ContainerBuilder moduleBuilder)
+        {
+            moduleBuilder.RegisterType<<$Ai_Bll_ClassName>Entity>();
+            moduleBuilder.RegisterType<<$Ai_Bll_List_ClassName>Entity>();
+            moduleBuilder.RegisterType<<$Ai_Bll_ClassName>_DB>().As<I<$Ai_Bll_ClassName>Dal>();
+        }
+    }
+
+    /// <summary>
+    /// 此处实现 <$Ai_Object_ChineseName> 存储过程数据访问  I<$Ai_Bll_ClassName>Dal 接口
+    /// </summary>
+    public   class <$Ai_Bll_ClassName>_DB  :I<$Ai_Bll_ClassName>Dal
+    {
+
+        private ILifetimeScope _lc;
+
+        public <$Ai_Bll_ClassName>_DB(ILifetimeScope lc)
+        {
+            _lc = lc;
+
+        }
+    	 
+        /// <summary>
+        /// 数据访问
+        /// </summary>
+        /// <param name="azItem">调用列表类</param>
+       public   void DB_SpFetch(<$Ai_Bll_List_ClassName>Entity azItem) 
+        {
+	    OperateState state = new OperateState();
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(azItem.Context.DbConnectionString))
+                {
+                    cn.Open();
+                    using (SqlCommand cmd = new SqlCommand("<$Ai_Query_Table>", cn))
+                    {
+		       cmd.CommandType = CommandType.StoredProcedure;
+		       #region 数据参数
+
+                       <$Ai_Sql_Query_Parameters>
+
+		       #endregion
+		        using (SqlDataReader azDataReader = cmd.ExecuteReader())
+                         {
+                            while (azDataReader.Read())
+				{
+				   var vItem = _lc.Resolve<<$Ai_Bll_ClassName>Entity>();
+				   <$Ai_Sql_Field_CopyTo_Class>
+				   azItem.Add(vItem);
+				}
+				<$Ai_Sql_Query_Parameters_Out>
+                         }
+                      }
+               
+                 }
+            }
+            catch (Exception e)
+            {
+                state.Error.Add("存储过程数据库查询", e.Message);
+                azItem.State = state;
+               
+            }
+	    state.AffectedRows = azItem.Count;
+            azItem.TotalCount = azItem.Count;
+            azItem.State = state;
+      }
+   }
+}

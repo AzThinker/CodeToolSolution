@@ -1,0 +1,63 @@
+        /// <summary>
+        /// 查询单个记录
+        /// </summary>
+        /// <param name="azItem">项目（也是传入参出）</param>
+        public void  DB_Fetch(<$Ai_Bll_ClassName>Entity azItem)
+         {
+	    #region 初始化数据
+	    OperateState state = new OperateState();
+            StringBuilder azStrBuilder = new StringBuilder();
+	    bool IsaccessDirect=!string.IsNullOrWhiteSpace(azItem.Criteria.AccessFetch);
+	    #endregion
+
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(azItem.Context.DbConnectionString))
+                {
+                    #region 数据访问
+                    #region 查询SQL语句
+
+			azStrBuilder.Append("SELECT TOP (1) ");
+			<$Ai_Sql_Commbin_A>
+			azStrBuilder.Append(" FROM  <$Ai_Query_Table> [a0] ");
+                    if (IsaccessDirect)
+                    { 
+			
+                        azStrBuilder.Append(azItem.Criteria.AccessFetch);
+                    }
+                    else
+                    {
+			azStrBuilder.Append(azItem.Criteria.QueryWhere);
+			azStrBuilder.Append(azItem.Criteria.QueryOrder);
+		    }
+		    #endregion
+                    cn.Open();
+                    using (SqlCommand cmd = new SqlCommand(azStrBuilder.ToString(), cn))
+                    {
+                        using (SqlDataReader azDataReader = cmd.ExecuteReader())
+                        {
+                            if (azDataReader.HasRows)
+                            {
+                                azDataReader.Read();
+                          
+                                <$Ai_Sql_Field_CopyTo_Class>
+                                state.AffectedRows =1;  
+                                azItem.State = state;
+                            }
+                            else
+                            {
+                                state.Error.Add("数据库查询", "当前查询没有记录");
+                                azItem.State = state;
+                            };
+                        };
+                    }
+                    #endregion
+                }
+            }
+            catch (Exception e)
+            {
+                state.Error.Add("数据库查询", e.Message);
+                azItem.State = state;
+            }
+	   }
+	 

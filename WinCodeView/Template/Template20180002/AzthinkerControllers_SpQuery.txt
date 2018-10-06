@@ -1,0 +1,22 @@
+using Atk.WebCore.Infrastructure;
+using Autofac;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Webdiyer.WebControls.AspNetCore;
+using <$Ai_Project_NameSpace>.UIServer.<$Ai_ProjectName>;
+
+ // <$Ai_Object_ChineseName>  存储过程
+namespace <$Ai_Project_NameSpace>.WebUI.<$Ai_ProjectName>.Controllers
+ {
+    
+    /// <summary>
+    /// <$Ai_Object_ChineseName>  （存储过程）
+    /// </summary>
+    public class <$Ai_Bll_ClassName>Controller  :Controller
+     {
+       private readonly <$Ai_Bll_ClassName>WebHandle _handle = <$Ai_Bll_ClassName>WebHandle.GetWebHandle();
+
+        <$Ai_Controllers_IndexPage>
+
+     }
+   }

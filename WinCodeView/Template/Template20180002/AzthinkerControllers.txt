@@ -1,0 +1,37 @@
+using Autofac;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Webdiyer.WebControls.AspNetCore;
+using <$Ai_Project_NameSpace>.UIServer.<$Ai_ProjectName>;
+
+
+// <$Ai_Object_ChineseName> 控制器
+namespace <$Ai_Project_UI_FullNameSpace>.<$Ai_ProjectName>.Controllers
+ {
+        /// <summary>
+        /// <$Ai_Object_ChineseName>
+        /// </summary>
+    public class <$Ai_Bll_ClassName>Controller  :Controller
+     {
+       
+       private readonly <$Ai_Bll_ClassName>WebHandle _handle = <$Ai_Bll_ClassName>WebHandle.GetWebHandle();
+
+	private ILifetimeScope _lc;
+
+        public <$Ai_Bll_ClassName>Controller(ILifetimeScope lc)
+        {
+            _lc = lc;
+        }
+
+       <$Ai_Controllers_IndexPage>
+
+       <$Ai_Controllers_Create>
+      
+       <$Ai_Controllers_Edit>
+        
+       <$Ai_Controllers_detail>
+
+       <$Ai_Controllers_Delete> 
+
+    }
+   }

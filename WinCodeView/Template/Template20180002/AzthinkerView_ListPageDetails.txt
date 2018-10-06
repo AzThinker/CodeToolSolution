@@ -1,0 +1,22 @@
+@using Webdiyer.WebControls.AspNetCore;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper "*,Webdiyer.WebControls.MvcPager"
+@using <$Ai_Project_NameSpace>.UIServer.<$Ai_ProjectName>
+@model <$Ai_Bll_List_ClassName>WebDto
+
+<div style="clear: both;"></div>
+<div id="<$Ai_View_Ajax_UpdateTargetId>">
+     <table>
+       <tr>
+        <$Ai_View_Table_Head>
+       </tr>
+        @foreach (var item in Model)
+        {
+               <tr>
+                   <$Ai_View_Table_Body>
+               </tr>
+	      
+         }
+     </table>
+ </div>
+<mvcpager asp-model="@Model" ajax-enabled="true" ajax-update-target="<$Ai_View_Ajax_UpdateTargetId>"></mvcpager>

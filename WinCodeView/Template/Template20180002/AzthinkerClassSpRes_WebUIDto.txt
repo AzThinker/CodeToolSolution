@@ -1,0 +1,85 @@
+using Autofac;
+using Atk.DataPortal;
+using Atk.DataPortal.UiServer;
+using System;
+using System.ComponentModel.DataAnnotations;
+using <$Ai_Project_NameSpace>.BLL.<$Ai_ProjectName>;
+
+// <$Ai_Object_ChineseName> UI的Dto类
+namespace <$Ai_Project_NameSpace>.UIServer.<$Ai_ProjectName>
+{
+    /// <summary>
+    /// <$Ai_Object_ChineseName>   UI的Dto类
+    /// </summary>
+    public sealed class  <$Ai_Bll_ClassName>WebDto:BaseUISpDto<<$Ai_Bll_ClassName>WebDto,<$Ai_Bll_ClassName>Entity>
+    {
+        #region  属性定义
+        /// <summary>
+        /// 中文名称
+        /// </summary>
+        [ScaffoldColumn(false)]
+        public static string DisplayDescription { get; set; }
+	
+        <$Ai_Class_Property_List_WithAttribute> 
+
+        #endregion
+
+	#region   操作执行属性定义(为存储过程中参数组成)
+
+	<$Ai_Cmd_PrivateProperty>
+
+	#endregion
+
+        #region 构造方法
+
+        /// <summary>
+        /// <$Ai_Object_ChineseName> 构造方法
+        /// </summary>
+        public  <$Ai_Bll_ClassName>WebDto(ILifetimeScope lc): base()
+        {
+            _lc = lc;
+            Power = new Power();
+            DisplayDescription = "<$Ai_Object_ChineseName>"; 
+	    <$Ai_Default_Value_Create>
+        }
+	#endregion
+
+	#region  属性拷贝
+	
+	/// <summary>
+        /// 由BLL类型转换成UI的Dto类型
+        /// </summary>
+        /// <param name="item">BLL类型</param>
+	public override <$Ai_Bll_ClassName>WebDto CopyToOut(<$Ai_Bll_ClassName>Entity item)
+        {
+            <$Ai_BLLClass_To_UIDto>
+            return this;
+        }
+
+        /// <summary>
+        /// josn对象拷贝
+        /// </summary>
+        /// <returns></returns>
+        public override object JsonCopy()
+        {
+            return new
+            {
+                <$Ai_UiDto_To_JosnClass>
+                #region  类权限赋值
+                AtkCheck = this.Power.Check,
+                AtkCreate = this.Power.Create,
+                AtkDelete = this.Power.Delete,
+                AtkEdit = this.Power.Edit,
+                AtkExport = this.Power.Export,
+                AtkExportIn = this.Power.ExportIn,
+                AtkGet = this.Power.Get,
+                AtkReport = this.Power.Report
+                #endregion
+            };
+        }
+
+       	#endregion
+    }
+
+
+  }

@@ -1,0 +1,44 @@
+        /// <summary>
+        /// 增加 <$Ai_Object_ChineseName>
+        /// </summary>
+        /// <param name="azItem">业务类</param>
+	/// <param name="context">上下文</param>
+        public void DB_Insert(<$Ai_Bll_ClassName>Entity azItem) 
+         {
+	    #region 初始化数据
+	    OperateState state = new OperateState();
+            StringBuilder azStrBuilder = new StringBuilder();
+	    #endregion
+              if (string.IsNullOrEmpty(azItem.Criteria.InsertSql))
+            {
+	       <$Ai_Sql_Insert_Statement>
+	    }
+            else
+            {
+	      azStrBuilder.Append(" Insert Into   <$Ai_Do_Table> ");
+              azStrBuilder.Append(azItem.Criteria.InsertSql);
+	      <$Ai_Sql_Insert_AutoId>
+	    }
+            using (SqlConnection cn = new SqlConnection(azItem.Context.DbConnectionString))
+            {
+                cn.Open();
+                using (SqlCommand cmd = new SqlCommand(azStrBuilder.ToString(), cn))
+                {
+		    #region 数据参数
+		    SqlParameter param =null;
+
+                    <$Ai_Sql_PutIn_Parameters>
+		    #endregion
+
+                    int c = cmd.ExecuteNonQuery();
+                    if (c == 0)
+                    {
+                        state.Error.Add("数据库增加", "没有记录增加");
+
+                    }
+		    <$Ai_Sql_IDENTITY_Return>
+		    state.AffectedRows = c;
+                    azItem.State= state;
+                };
+	       }
+           }

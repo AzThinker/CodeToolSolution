@@ -1,0 +1,118 @@
+        /// <summary>
+        /// 获取分页异步查询列表
+        /// </summary>
+        /// <param name="azItems">项目列表（也是传入参出）</param>
+         public void DB_FetchList(<$Ai_Bll_List_ClassName>Entity azItems)
+         {
+	    #region 初始化数据
+	    OperateState state = new OperateState();
+            StringBuilder azStrBuilder = new StringBuilder();
+	    StringBuilder aisbcount = new StringBuilder();
+	    int RCount = 0; //记录总数
+	    int aiPage=-1; int aiRows=-1;
+            aiPage = azItems.Criteria.CurrentPage;
+            aiRows = azItems.Criteria.QueryRows;
+	    bool IsaccessDirect=!string.IsNullOrWhiteSpace(azItems.Criteria.AccessFetchList);
+	    #endregion
+
+	    #region 数据访问
+            using (SqlConnection cn = new SqlConnection(azItems.Context.DbConnectionString))
+            {
+	        #region 数据记录总数查询
+                aisbcount.Append(" SELECT COUNT(*) AS AiCount");
+		aisbcount.Append(" FROM dbo.<$Ai_Query_Table> a0");
+                if (IsaccessDirect)
+                {
+                    aisbcount.Append(azItems.Criteria.AccessFetchList);
+                }
+                else
+                {
+                    aisbcount.Append(azItems.Criteria.QueryWhere);
+		}
+                cn.Open();
+                using (SqlCommand cmd = new SqlCommand(aisbcount.ToString(), cn))
+                {
+                    using (SqlDataReader azDataReader = cmd.ExecuteReader())
+                    {
+                        if (azDataReader.Read())
+                            RCount = (int)azDataReader["AiCount"];
+                    }
+                }
+		//如果只查询记录数,而不查询记录时的返回
+                if (aiPage == -1 && aiRows == -1)
+                {
+                    azItems.TotalCount = RCount;
+                    azItems.State = state;
+                }
+                #endregion
+
+                #region SQL
+                if (aiPage + aiRows > 0)
+                {
+		   #region 需分页数据查询时
+                    //当前不是有序表达式时
+                    aiPage = aiPage > 0 ? aiPage : 1;
+                    aiRows = aiRows > 0 ? aiRows : 20;
+                    string aiorder = azItems.Criteria.QueryOrder;
+                    if (string.IsNullOrWhiteSpace(aiorder))
+                    {
+                        aiorder = " order by [<$Ai_KeyField_Name>]";
+                    }
+                    azStrBuilder.Append(" SELECT  Top(" + aiRows.ToString() + ") ");
+		    <$Ai_Sql_Fetch_Statement>
+                    azStrBuilder.Append("  From (SELECT     ");
+		    <$Ai_Sql_Commbin_A>
+                    azStrBuilder.Append(" ,row_number() OVER (" + aiorder + ") AS [row_number]");
+		    azStrBuilder.Append(" FROM  <$Ai_Query_Table> As [a0]");
+                    if (IsaccessDirect)
+                    {
+	                azStrBuilder.Append(azItems.Criteria.AccessFetchList);
+                    }
+                    else
+                    {
+			azStrBuilder.Append(azItems.Criteria.QueryWhere);
+		    }
+                    azStrBuilder.Append(" ) as  aipagequery  ");
+                    azStrBuilder.Append(" where row_number>" + ((aiPage - 1) * aiRows).ToString());
+                    azStrBuilder.Append(aiorder);
+		    #endregion
+                }
+                else
+                {
+		    //非分页记录时
+                    azStrBuilder.Append(" SELECT  ");
+		    <$Ai_Sql_Commbin_A>
+		    azStrBuilder.Append(" FROM  <$Ai_Query_Table> As [a0] ");
+                    if (IsaccessDirect)
+                    {
+			
+                        azStrBuilder.Append(azItems.Criteria.AccessFetchList);
+                    }
+                    else
+                    {
+			azStrBuilder.Append(azItems.Criteria.QueryWhere);
+			azStrBuilder.Append(azItems.Criteria.QueryOrder);
+		    }
+                }
+                #endregion
+
+                #region 数据拷贝
+                using (SqlCommand cmd = new SqlCommand(azStrBuilder.ToString(), cn))
+                {
+                    using (SqlDataReader azDataReader = cmd.ExecuteReader())
+                    {
+                        while (azDataReader.Read())
+                        {
+                           var vItem = _lc.Resolve<<$Ai_Bll_ClassName>Entity>();
+                           <$Ai_Sql_Field_CopyTo_Class>
+			   azItems.Add(vItem);
+                        }
+                    }
+                };
+		#endregion
+            }
+	    state.AffectedRows = azItems.Count;
+            azItems.TotalCount = RCount;
+            azItems.State = state;
+	    #endregion
+	  }

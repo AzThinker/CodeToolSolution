@@ -1,0 +1,89 @@
+        /// <summary>
+        /// 更新 <$Ai_Object_ChineseName>
+        /// </summary>
+        /// <param name="azItem">业务类</param>
+        public void DB_Update(<$Ai_Bll_ClassName>Entity azItem) 
+         {
+	    #region 初始化数据
+	    OperateState state = new OperateState();
+            StringBuilder azStrBuilder = new StringBuilder();
+	    #endregion
+
+            if (string.IsNullOrEmpty(azItem.Criteria.UpdateSql))
+            {
+	        <$Ai_Sql_Update_Statement>
+
+            }
+	    else
+	    {
+                azStrBuilder.Append(" Update [a0] Set ");
+                azStrBuilder.Append(azItem.Criteria.UpdateSql);
+		azStrBuilder.Append(" From  <$Ai_Do_Table> As [a0] ");
+	    }
+	    //单记录操作
+	    bool isoneupdate = string.IsNullOrWhiteSpace(azItem.Criteria.QueryWhere);
+	    //启用了事务并且是多记录操作时，才使用事务
+            bool istran = azItem.Context.IsTransaction && !isoneupdate;
+           if (isoneupdate) 
+	    { 
+	        //无条件传入时,以关键字段更新
+		azStrBuilder.Append(" <$Ai_Where_KeysField_SQL> ");
+	    } else
+	    {
+		azStrBuilder.Append(azItem.Criteria.QueryWhere);
+		azStrBuilder.Append(azItem.Criteria.QueryOrder);
+	    }
+            using (SqlConnection cn = new SqlConnection(azItem.Context.DbConnectionString))
+            {
+	       SqlTransaction azTransaction = null;
+                try
+                {
+                    if (istran)
+                    {
+                        azTransaction = cn.BeginTransaction("<$Ai_Bll_ClassName>Entity_update_tran");
+
+                    }
+                cn.Open();
+                using (SqlCommand cmd = new SqlCommand(azStrBuilder.ToString(), cn))
+                {
+		    #region 数据参数
+		    SqlParameter param =null;
+
+		    if (isoneupdate) 
+		     {
+		       //无条件传入时,以关键字段值为条件进行更新
+		       <$Ai_Sql_PutIn_Keys_Parameters>
+		     }
+
+                    <$Ai_Sql_PutIn_Parameters>
+
+		    #endregion
+                    int c = cmd.ExecuteNonQuery();
+                    if (c == 0)
+                    {
+                        state.Error.Add("数据库更新", "没有记录更新");
+
+                    }
+		    state.AffectedRows = c;
+                    azItem.State= state;
+                };
+             if (istran)
+                    {
+                        azTransaction.Commit();
+
+                    }
+                }
+                catch
+                {
+                    if (istran)
+                    {
+                        azTransaction.Rollback();
+                        state.Error.Add("数据库更新错误！", "没有记录更新");
+                    }
+                    else
+                    {
+                        state.Error.Add("数据库更新错误！", "更新记录错误");
+                    }
+                }
+            }
+        }

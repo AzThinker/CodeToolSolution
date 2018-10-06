@@ -1,0 +1,36 @@
+@Html.ActionLink("±à¼­", "Edit", new { <$Ai_View_Keys_Parameters> })
+@Html.ActionLink("±à¼­", "Edit", new { <$Ai_View_Keys_Parameters> })
+@Html.ActionLink("±à¼­", "Edit", new { <$Ai_View_Keys_Parameters> })
+@Html.ActionLink("±à¼­", "Edit", new { <$Ai_View_Keys_Parameters> })
+@Html.ActionLink("Ã÷Ï¸", "Details", new { <$Ai_View_Keys_Parameters> })
+@Html.ActionLink("Ã÷Ï¸", "Details", new { <$Ai_View_Keys_Parameters> })
+@Html.ActionLink("É¾³ý", "Delete", new { <$Ai_View_Keys_Parameters>})
+@Html.ActionLink("É¾³ý", "Delete", new { <$Ai_View_Keys_Parameters>})
+@Html.ActionLink("É¾³ý", "Delete", new { <$Ai_View_Keys_Parameters>})
+@Html.ActionLink("É¾³ý", "Delete", new { <$Ai_View_Keys_Parameters>})
+
+@Html.ActionLink("±à¼­", "Edit", new { <$Ai_View_Keys_Parameters> })
+@Html.ActionLink("±à¼­", "Edit", new { <$Ai_View_Keys_Parameters> })
+@Html.ActionLink("É¾³ý", "Delete", new { <$Ai_View_Keys_Parameters>})
+@Html.ActionLink("É¾³ý", "Delete", new { <$Ai_View_Keys_Parameters>})
+
+
+
+
+0JQÈ¨ÏÞ±à¼­
+1JQ±à¼­>
+2È¨ÏÞ±à¼­
+3ÆÕÍ¨±à¼­
+
+4JQÃ÷Ï¸
+5ÆÕÍ¨Ã÷Ï¸
+
+6È¨ÏÞJQÉ¾³ý
+7ÆÕÍ¨JQÉ¾³ý
+8È¨ÏÞÉ¾³ý
+9ÆÕÍ¨É¾³ý
+
+11JQÈ¨ÏÞ±à¼­page
+12È¨ÏÞ±à¼­
+13È¨ÏÞJQÉ¾³ý
+14È¨ÏÞÉ¾³ý

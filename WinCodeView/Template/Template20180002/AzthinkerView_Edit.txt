@@ -1,0 +1,20 @@
+
+@using <$Ai_Project_NameSpace>.UIServer.<$Ai_ProjectName>
+@model <$Ai_Bll_ClassName>WebDto
+@{
+   ViewBag.Title = "编辑"+<$Ai_Bll_ClassName>WebDto.DisplayDescription;
+ }
+
+<$Ai_View_Jquery_Validate>
+
+<h2>@string.Concat(@<$Ai_Bll_ClassName>WebDto.DisplayDescription,"编辑")</h2>
+@using (Html.BeginForm("Edit", "<$Ai_Bll_ClassName>")) {
+  @Html.ValidationSummary(true)
+   <fieldset>
+    <legend>@string.Concat("编辑",@<$Ai_Bll_ClassName>WebDto.DisplayDescription)</legend>
+            <$Ai_View_Edit_FieldSet>
+     <button type="submit">编辑</button>  
+    </fieldset>
+ }
+ @Html.ActionLink("返回列表", "<$Ai_Goto_Index>") 
+

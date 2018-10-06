@@ -1,0 +1,12 @@
+        /// <summary>
+        /// 返回<$Ai_Object_ChineseName>列表
+        /// 异步调用数据,其异步部分明细View没有Controller只有View
+        /// </summary>
+       <$Ai_Power_CanGet>
+       public IActionResult Index()
+        {
+	  var paramItem = EngineContext.Current.Resolve<<$Ai_Bll_List_ClassName>WebDto>();
+          // 手动加入条件参数；
+           var model = _handle.GetList(paramItem);
+           return View(model);
+        }

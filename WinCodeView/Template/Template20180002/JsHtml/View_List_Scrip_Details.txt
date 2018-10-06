@@ -1,0 +1,26 @@
+function showdetail(<$Ai_View_Call_Scrip_Parameters>)
+    {
+        $("#dialog-contentmsg").empty();
+        $.ajax({
+            url: "/<$Ai_Bll_ClassName>/DetailsDialog",
+            data: {<$Ai_View_Call_Scrip_Parametersaction> },
+            async: false,
+              success: function (data)
+            {
+                $("#dialog-contentmsg").html(data);
+            }
+        });
+        $("#dialog-contentmsg").dialog({
+            title: "œÍœ∏–≈œ¢",
+            width: "auto",
+            height: "auto",
+            modal: true,
+            position: ['center', 50],
+            buttons: {
+                πÿ±’: function ()
+                {
+                    $(this).dialog("close");
+                }
+            }
+        });        
+    }

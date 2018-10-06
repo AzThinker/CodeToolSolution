@@ -17,12 +17,20 @@ namespace WinCodeView.CodeTools
 
         public bool HasDalLayer { get; set; }
 
+
+        public bool HasBll { get; set; }
+
+        public bool HasBllList { get; set; }
+
         public bool HasBllExt { get; set; }
 
         public string DalLayerDir { get; set; }
 
         public string DalLayerSuffix { get; set; }
-        public bool HasWebServe { get; set; }
+        public bool HasWebUIDto { get; set; }
+
+        public bool HasWebListUIDto { get; set; }
+        public bool HasWebListUIHandle { get; set; }
         public bool HasWebServeExt { get; set; }
         public bool HasBatchDell { get; set; }
         public bool HasUpDataBmp { get; set; }

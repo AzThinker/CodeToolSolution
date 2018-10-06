@@ -1,0 +1,3 @@
+@Html.ActionLink("返回列表","<$MyGotoIndex>")
+@Html.ActionLink("增加", "Create")
+Index

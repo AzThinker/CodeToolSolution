@@ -1,0 +1,185 @@
+        /// <summary>
+        /// 批更新 <$Ai_Object_ChineseName>
+        /// </summary>
+        /// <param name="azItems">业务类</param>
+        public void DB_BatchSave(<$Ai_Bll_List_ClassName>Entity azItems) 
+         {
+	    #region 初始化数据
+            string cmd_insert = string.Empty;
+            string cmd_update = string.Empty;
+            string cmd_delete = string.Empty;
+	    OperateState state = new OperateState();
+            StringBuilder azStrBuilder = new StringBuilder();
+	    #endregion
+
+	     #region SQL语句字串
+	    //增加语句
+	    if (string.IsNullOrEmpty(azItems.Criteria.InsertSql))
+            {
+	      <$Ai_Sql_Insert_Statement>
+            }
+            else
+            {
+	      azStrBuilder.Append(" Insert Into   <$Ai_Do_Table> ");
+              azStrBuilder.Append(azItems.Criteria.InsertSql);
+	      <$Ai_Sql_Insert_AutoId>
+	    }
+            cmd_insert = azStrBuilder.ToString();
+            azStrBuilder.Clear();
+
+            //更新语句
+	    if (string.IsNullOrEmpty(azItems.Criteria.UpdateSql))
+            {
+	       <$Ai_Sql_Update_Statement>
+            }
+	    else
+	    {
+                azStrBuilder.Append(" Update [a0] Set ");
+                azStrBuilder.Append(azItems.Criteria.UpdateSql);
+		azStrBuilder.Append(" From  <$Ai_Do_Table> As [a0] ");
+	    }
+            if (string.IsNullOrWhiteSpace(azItems.Criteria.QueryWhere))
+            {
+                //无条件传入时,以关键字段更新
+                azStrBuilder.Append(" <$Ai_Where_KeysField_SQL>   ");
+            }
+            else
+            {
+                //批更新时，必需根据关键字段更新
+                azStrBuilder.Append(azItems.Criteria.QueryWhere + " and (<$Ai_NoWhere_KeysField_SQL> )");
+            }
+            cmd_update = azStrBuilder.ToString();
+            azStrBuilder.Clear();
+	                if (string.IsNullOrWhiteSpace(azItems.Criteria.QueryWhere)) 
+	    {
+	        //无条件传入时,以关键字段值为条件进行删除
+		azStrBuilder.Append(" Delete [a0] From <$Ai_Do_Table>  As [a0] <$Ai_Where_KeysField_SQL> ");
+	    } else
+	    {
+		azStrBuilder.Append(" Delete [a0] From <$Ai_Do_Table>  As [a0] ");
+		azStrBuilder.Append(azItems.Criteria.QueryWhere+ " and (<$Ai_NoWhere_KeysField_SQL> )");
+	    }
+            cmd_delete = azStrBuilder.ToString();
+            azStrBuilder.Clear();
+            #endregion
+
+            using (SqlConnection cn = new SqlConnection(azItems.Context.DbConnectionString))
+            {
+	        SqlTransaction transaction = null;
+                int affectedrows = 0;
+		if (azItems.Context.IsTransaction)
+                transaction = cn.BeginTransaction("<$Ai_Bll_ClassName>_batchsave_Transaction");
+                try
+                {
+                 cn.Open();
+		 foreach (var item in azItems)
+                    {
+                        switch (item.BizOp)
+                        {
+                            case BizRecordOperater.Insert: //增加
+                                {
+                                    affectedrows += DB_BatchInsert(item, cn, cmd_insert);
+                                }
+                                break;
+                            case BizRecordOperater.Updata: //更新
+                                {
+                                    affectedrows += DB_BatchUpdate(item, azItems.Criteria, cn, cmd_update);
+                                }
+                                break;
+                            case BizRecordOperater.Delete: //删除
+                                {
+                                    affectedrows += DB_BatchDelete(item, azItems.Criteria, cn, cmd_delete);
+                                }
+                                break;
+                        }
+                    }
+                    azItems.State.AffectedRows = affectedrows;
+		 if (azItems.Context.IsTransaction)
+                    transaction.Commit();
+                }
+                catch (Exception e)
+                {
+		  if (azItems.Context.IsTransaction)
+                    transaction.Rollback();
+                    azItems.State.Error.Add("数据库批量更新错误！", e.Message);
+
+                }
+
+            }
+        }
+
+
+       private int DB_BatchInsert(<$Ai_Bll_ClassName>Entity azItem, SqlConnection cn, string cmdtext)
+        {
+            int c = 0;
+            using (SqlCommand cmd = new SqlCommand(cmdtext, cn))
+            {
+                #region 数据参数
+                SqlParameter param = null;
+
+                <$Ai_Sql_PutIn_Parameters_Bi>
+
+                #endregion
+
+                c = cmd.ExecuteNonQuery();
+                if (c == 0)
+                {
+                    azItem.State.Error.Add("数据库增加", "没有记录增加");
+
+                }
+                <$Ai_Sql_IDENTITY_Return>
+
+
+            };
+
+            return c;
+
+        }
+
+        private int DB_BatchUpdate(<$Ai_Bll_ClassName>Entity azItem, BusinessCriteria Criteria, SqlConnection cn, string cmdtext)
+        {
+
+            using (SqlCommand cmd = new SqlCommand(cmdtext, cn))
+            {
+                #region 数据参数
+                SqlParameter param = null;
+
+                 <$Ai_Sql_PutIn_Keys_Parameters>
+		  
+                 <$Ai_Sql_PutIn_Parameters_Bu>
+
+                #endregion
+
+                int c = cmd.ExecuteNonQuery();
+                if (c == 0)
+                {
+                    azItem.State.Error.Add("数据库更新", "没有记录更新");
+
+                }
+
+                return c;
+            };
+
+        }
+
+        private int DB_BatchDelete(<$Ai_Bll_ClassName>Entity azItem, BusinessCriteria Criteria, SqlConnection cn, string cmdtext)
+        {
+            using (SqlCommand cmd = new SqlCommand(cmdtext, cn))
+            {
+                #region 数据参数
+
+                SqlParameter param = null;
+		<$Ai_Sql_PutIn_Keys_Parameters>
+
+                #endregion
+
+                int c = cmd.ExecuteNonQuery();
+                if (c == 0)
+                {
+                    azItem.State.Error.Add("Delete", "没有记录删除");
+                }
+
+                return c;
+            };
+
+        }

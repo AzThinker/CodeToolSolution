@@ -1,0 +1,21 @@
+using Autofac;
+using Atk.DataPortal;
+using Atk.DataPortal.Core;
+using System;
+
+// <$Ai_Object_ChineseName>有返回结果存储过程业务类
+namespace <$Ai_Project_NameSpace>.BLL.<$Ai_ProjectName>
+{
+    /// <summary>
+    /// <$Ai_Object_ChineseName> 业务类
+    /// </summary>
+   [Serializable]
+   public sealed  class <$Ai_Bll_ClassName>Entity :BusinessBase
+   {
+        #region  业务属性定义
+
+        <$Ai_Class_Property_List> 
+
+        #endregion
+    }
+}

@@ -1,0 +1,49 @@
+using Autofac;
+using Atk.WebCore.Infrastructure;
+using Atk.DataPortal.Core;
+using Atk.DataPortal;
+using Atk.DataPortal.UiServer;
+using System;
+using System.ComponentModel.DataAnnotations;
+using <$Ai_Project_NameSpace>.BLL.<$Ai_ProjectName>;
+
+// <$Ai_Object_ChineseName> UI的Dto类
+namespace <$Ai_Project_NameSpace>.UIServer.<$Ai_ProjectName>
+{
+    /// <summary>
+    /// <$Ai_Object_ChineseName>   UI的执行类参数Dto
+    /// </summary>
+    public class <$Ai_Bll_ClassName>ExecDto : BaseUIExecDto<<$Ai_Bll_ClassName>Entity>
+    {
+       	#region   操作执行属性定义(为存储过程中参数组成)
+
+	<$Ai_Cmd_PrivateProperty>
+
+ 	#endregion
+
+        #region 构造方法
+
+        /// <summary>
+        /// <$Ai_Object_ChineseName> 构造方法
+        /// </summary>
+        public  <$Ai_Bll_ClassName>ExecDto(ILifetimeScope lc): base()
+        {
+            _lc = lc;
+            Power = new Power();
+	    <$Ai_Default_Value_Create>
+        }
+	#endregion
+
+
+	/// <summary>
+        /// 由Dto类型转换成BLL类型进行保存操作
+        /// </summary>
+        /// <param name="item">UI的Dto类型</param>
+	public override <$Ai_Bll_ClassName>Entity CopyToIn()
+        {
+		var data =_lc.Resolve<<$Ai_Bll_ClassName>Entity>();
+		<$Ai_UiDto_To_BLLClass_Param>
+		return data;
+        }
+    }
+}

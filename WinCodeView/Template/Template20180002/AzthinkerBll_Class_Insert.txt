@@ -1,0 +1,8 @@
+	
+	/// <summary>
+        /// 新增 <$Ai_Object_ChineseName> 
+        /// </summary>
+        public void DataPortal_Insert()
+        {
+	     CheckworkContext().DB_Insert(this);
+        }

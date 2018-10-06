@@ -1,0 +1,19 @@
+       /// <summary>
+       /// 返回 <$Ai_Object_ChineseName> 列表
+       /// 异步调用数据,其异步部分明细View没有Controller只有View
+       /// </summary>
+       <$Ai_Power_CanGet>
+       public IActionResult Index(int pageindex=1)
+        {
+	    var bizExp = _handle.GetExp();
+	    bizExp.LookPage(pageindex,20);
+	    var model = _handle.GetList(bizExp);
+	    model.PageSize = 20;
+	    model.CurrentPageIndex = pageindex;
+            string xrh = Request.Headers["X-Requested-With"];
+          if (!string.IsNullOrEmpty(xrh) && xrh.Equals("XMLHttpRequest", System.StringComparison.OrdinalIgnoreCase))
+           {
+             return PartialView("DetailsPage", model);
+           }
+           return View(model);
+        }

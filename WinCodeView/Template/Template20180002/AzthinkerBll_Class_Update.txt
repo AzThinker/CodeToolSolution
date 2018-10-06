@@ -1,0 +1,9 @@
+        /// <summary>
+        /// 更新 <$Ai_Object_ChineseName> 
+        /// </summary>
+        public void DataPortal_Update()
+        {
+            CheckworkContext().DB_Update(this);
+        }
+
+
