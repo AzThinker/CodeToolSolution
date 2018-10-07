@@ -1,17 +1,17 @@
 
-@using <$Ai_Project_NameSpace>.UIServer.<$Ai_ProjectName>
-@model <$Ai_Bll_ClassName>WebDto
+@using <$Ai_Project_NameSpace>.BLL.<$Ai_ProjectName>
+@model <$Ai_Bll_ClassName>
 @{
-   ViewBag.Title = "编辑"+<$Ai_Bll_ClassName>WebDto.DisplayDescription;
+   ViewBag.Title = "编辑<$Ai_Object_ChineseName>";
  }
 
 <$Ai_View_Jquery_Validate>
 
-<h2>@string.Concat(@<$Ai_Bll_ClassName>WebDto.DisplayDescription,"编辑")</h2>
+<h2>编辑<$Ai_Object_ChineseName></h2>
 @using (Html.BeginForm("Edit", "<$Ai_Bll_ClassName>")) {
   @Html.ValidationSummary(true)
    <fieldset>
-    <legend>@string.Concat("编辑",@<$Ai_Bll_ClassName>WebDto.DisplayDescription)</legend>
+    <legend>编辑<$Ai_Object_ChineseName></legend>
             <$Ai_View_Edit_FieldSet>
      <button type="submit">编辑</button>  
     </fieldset>

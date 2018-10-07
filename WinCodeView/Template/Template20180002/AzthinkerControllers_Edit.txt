@@ -4,9 +4,9 @@
        <$Ai_Power_CanEdit>
        public IActionResult Edit(<$Ai_Keys_Arg_Param_Id>)
         {
-	   var bizExp = _handle.GetExp();
-	   bizExp.AddAndWhere(s => <$Ai_Keys_Param_Id_Lambda_NonePer>);
-	   var model = _handle.Get(bizExp);
+	    var model = repository.Query()
+				.Select(<$Ai_Select_Statement_Lambda>
+				 ).Where(s => <$Ai_Keys_Param_Id_Lambda_NonePer>).Go().FirstOrDefault();
            <$Ai_Dropdown_List>
            return View(model);
         }
@@ -17,11 +17,12 @@
        <$Ai_Power_CanEdit>
        <$Ai_HttpPost>
        [ActionName("Edit")]
-       public IActionResult EditPost(<$Ai_Bll_ClassName>WebDto model)
+       public IActionResult EditPost(<$Ai_Bll_ClassName> model)
         {
            if (ModelState.IsValid)
              {
-                _handle.Update(model);//按增加保存 
+                repository.Update()<$Ai_Upate_Statement_Lambda>
+			.Go();//按增加保存 
                 return RedirectToAction("Index");
              } 
                <$Ai_Dropdown_List>

@@ -1,49 +1,28 @@
-using Atk.DataPortal.Core;
 using System;
-       
+using System.Collections.Generic;
+using Webdiyer.WebControls.AspNetCore;
+
 //<$Ai_Object_ChineseName>列表类
 namespace <$Ai_Project_NameSpace>.BLL.<$Ai_ProjectName>
 {
    /// <summary>
    /// <$Ai_Object_ChineseName>  列表类
    /// </summary>
-   [Serializable]
-  public   class <$Ai_Bll_List_ClassName>Entity : BusinessListBase<<$Ai_Bll_ClassName>Entity>, IBusinessFetch
+  public   class <$Ai_Bll_List_ClassName> : List<<$Ai_Bll_ClassName>>, IPagedList
   {
+	public string DisplayDescription = "<$Ai_Object_ChineseName>";
+	public int PageSize { get; set; }
+        public int TotalItemCount { get; set; }
+        public int CurrentPageIndex { get; set; }
 
-
-	#region  构造部分
-	
-	/// <summary>
-	/// 数据操作接口
-	/// </summary>
-        [NonSerialized]
-        private I<$Ai_Bll_ClassName>Dal _dbaccess;
-
-        public <$Ai_Bll_List_ClassName>Entity(I<$Ai_Bll_ClassName>Dal dbaccess)
+        public static <$Ai_Bll_List_ClassName> GetModelList((IEnumerable<<$Ai_Bll_ClassName>> QueryResult, int PageCount) queryresult, int pageSize, int currentPageIndex)
         {
-            _dbaccess = dbaccess;
-        }
-
-        /// <summary>
-        /// 当由WCF访问时,不会调用构造方法,因此需重建数据层访问
-        /// </summary>
-        /// <param name="workContext">Autoface容器上下文</param>
-        /// <returns>数据操作接口</returns>
-        private I<$Ai_Bll_ClassName>Dal CheckworkContext()
-        {
-            if (_dbaccess == null)
-            {
-                _dbaccess = this.WorkContext.Resolve<I<$Ai_Bll_ClassName>Dal>();
-            }
-            return _dbaccess;
-        }
-        #endregion
-
-        #region  业务方法
-
-	 <$Ai_Bll_List_Method_Fetch>
-
-	#endregion
+            <$Ai_Bll_List_ClassName> models = new <$Ai_Bll_List_ClassName>();
+            models.AddRange(queryresult.QueryResult);
+            models.TotalItemCount = queryresult.PageCount;
+            models.PageSize = pageSize;
+            models.CurrentPageIndex = currentPageIndex;
+            return models;
         }
   }
+}

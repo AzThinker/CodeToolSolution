@@ -4,6 +4,8 @@
 	<$Ai_Power_CanGet>
        public IActionResult Index()
         {
-           var model = _handle.GetList();
-           return View(model);
+           var model = repository.Query()
+			 .Select(<$Ai_Select_Statement_Lambda>
+			 ).Go();
+		return View(model);
         }

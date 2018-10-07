@@ -1,11 +1,11 @@
-@using <$Ai_Project_NameSpace>.UIServer.<$Ai_ProjectName>
-@model <$Ai_Bll_List_ClassName>WebDto
+@using <$Ai_Project_NameSpace>.BLL.<$Ai_ProjectName>
+@model <$Ai_Bll_List_ClassName>
 @{
-   ViewBag.Title = <$Ai_Bll_List_ClassName>WebDto.DisplayDescription;
+   ViewBag.Title = "<$Ai_Object_ChineseName>";
    <$Ai_Layout>
  }
  
-<h2>@<$Ai_Bll_List_ClassName>WebDto.DisplayDescription</h2>
+<h2><$Ai_Object_ChineseName></h2>
 <div>
     <table>
        <tr>

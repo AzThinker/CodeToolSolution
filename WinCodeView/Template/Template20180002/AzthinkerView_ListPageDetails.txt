@@ -1,8 +1,8 @@
 @using Webdiyer.WebControls.AspNetCore;
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @addTagHelper "*,Webdiyer.WebControls.MvcPager"
-@using <$Ai_Project_NameSpace>.UIServer.<$Ai_ProjectName>
-@model <$Ai_Bll_List_ClassName>WebDto
+@using <$Ai_Project_NameSpace>.BLL.<$Ai_ProjectName>
+@model <$Ai_Bll_List_ClassName>
 
 <div style="clear: both;"></div>
 <div id="<$Ai_View_Ajax_UpdateTargetId>">

@@ -5,11 +5,11 @@
        <$Ai_Power_CanGet>
        public IActionResult Index(int pageindex=1)
         {
-	    var bizExp = _handle.GetExp();
-	    bizExp.LookPage(pageindex,20);
-	    var model = _handle.GetList(bizExp);
-	    model.PageSize = 20;
-	    model.CurrentPageIndex = pageindex;
+            var queryresult = repository.Query()
+			 .Select(<$Ai_Select_Statement_Lambda>
+                ).OrderBy(<$Ai_OrderBy_Statement_Lambda>).Page(20, pageindex-1).PageGo();
+
+            var model = <$Ai_Bll_List_ClassName>.GetModelList(queryresult, 20, pageindex);
             string xrh = Request.Headers["X-Requested-With"];
           if (!string.IsNullOrEmpty(xrh) && xrh.Equals("XMLHttpRequest", System.StringComparison.OrdinalIgnoreCase))
            {

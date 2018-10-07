@@ -383,6 +383,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Template\Template20180001\TemplateSet.json" />
+    <None Include="Template\Template20180002\TemplateSet.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -566,6 +567,75 @@
     <Content Include="Template\Template20180001\ViewHtml\View_List_Page_Content.txt" />
     <Content Include="Template\Template20180001\ViewHtml\View_List_Page_DetailsPage.txt" />
     <Content Include="Template\Template20180001\ViewHtml\View_Other_Html.txt" />
+    <Content Include="Template\Template20180002\AzthinkerBll_Class.txt" />
+    <Content Include="Template\Template20180002\AzthinkerBll_Class_Delete.txt" />
+    <Content Include="Template\Template20180002\AzthinkerBll_Class_Fetch.txt" />
+    <Content Include="Template\Template20180002\AzthinkerBll_Class_Insert.txt" />
+    <Content Include="Template\Template20180002\AzthinkerBll_Class_Sp_Cmd.txt" />
+    <Content Include="Template\Template20180002\AzthinkerBll_Class_Sp_Query.txt" />
+    <Content Include="Template\Template20180002\AzthinkerBll_Class_Update.txt" />
+    <Content Include="Template\Template20180002\AzthinkerBll_ListClass.txt" />
+    <Content Include="Template\Template20180002\AzthinkerBll_ListClass_Fetch.txt" />
+    <Content Include="Template\Template20180002\AzthinkerBll_ListClass_Sp_Query.txt" />
+    <Content Include="Template\Template20180002\AzthinkerClassSpRes_WebHandle.txt" />
+    <Content Include="Template\Template20180002\AzthinkerClassSpRes_WebListUIDto.txt" />
+    <Content Include="Template\Template20180002\AzthinkerClassSpRes_WebUIDto.txt" />
+    <Content Include="Template\Template20180002\AzthinkerClass_WebHandle.txt" />
+    <Content Include="Template\Template20180002\AzthinkerClass_WebHandleExec.txt" />
+    <Content Include="Template\Template20180002\AzthinkerClass_WebListUIDto.txt" />
+    <Content Include="Template\Template20180002\AzthinkerClass_WebUIDto.txt" />
+    <Content Include="Template\Template20180002\AzthinkerClass_WebUIExcDto.txt" />
+    <Content Include="Template\Template20180002\AzthinkerControllers.txt" />
+    <Content Include="Template\Template20180002\AzthinkerControllers_Create.txt" />
+    <Content Include="Template\Template20180002\AzthinkerControllers_Delete.txt" />
+    <Content Include="Template\Template20180002\AzthinkerControllers_Detail.txt" />
+    <Content Include="Template\Template20180002\AzthinkerControllers_DropList.txt" />
+    <Content Include="Template\Template20180002\AzthinkerControllers_Edit.txt" />
+    <Content Include="Template\Template20180002\AzthinkerControllers_Index.txt" />
+    <Content Include="Template\Template20180002\AzthinkerControllers_IndexPage.txt" />
+    <Content Include="Template\Template20180002\AzthinkerControllers_IndexPage_SpQuery.txt" />
+    <Content Include="Template\Template20180002\AzthinkerControllers_Index_SpQuery.txt" />
+    <Content Include="Template\Template20180002\AzthinkerControllers_Other.txt" />
+    <Content Include="Template\Template20180002\AzthinkerControllers_SpQuery.txt" />
+    <Content Include="Template\Template20180002\AzthinkerDal_Interface.txt" />
+    <Content Include="Template\Template20180002\AzthinkerDal_Sp_Cmd_Interface.txt" />
+    <Content Include="Template\Template20180002\AzthinkerDal_Sp_Query_Interface.txt" />
+    <Content Include="Template\Template20180002\AzthinkerDal_SQL.txt" />
+    <Content Include="Template\Template20180002\AzthinkerDal_SQL_BatchSave.txt" />
+    <Content Include="Template\Template20180002\AzthinkerDal_SQL_Delete.txt" />
+    <Content Include="Template\Template20180002\AzthinkerDal_SQL_Fetch.txt" />
+    <Content Include="Template\Template20180002\AzthinkerDal_SQL_FetchList.txt" />
+    <Content Include="Template\Template20180002\AzthinkerDal_SQL_Insert.txt" />
+    <Content Include="Template\Template20180002\AzthinkerDal_SQL_Sp.txt" />
+    <Content Include="Template\Template20180002\AzthinkerDal_SQL_SPQuery.txt" />
+    <Content Include="Template\Template20180002\AzthinkerDal_SQL_Update.txt" />
+    <Content Include="Template\Template20180002\AzthinkerView_Create.txt" />
+    <Content Include="Template\Template20180002\AzthinkerView_Delete.txt" />
+    <Content Include="Template\Template20180002\AzthinkerView_Detail.txt" />
+    <Content Include="Template\Template20180002\AzthinkerView_Edit.txt" />
+    <Content Include="Template\Template20180002\AzthinkerView_List.txt" />
+    <Content Include="Template\Template20180002\AzthinkerView_ListPage.txt" />
+    <Content Include="Template\Template20180002\AzthinkerView_ListPageDetails.txt" />
+    <Content Include="Template\Template20180002\AzthinkerView_List_NoLink.txt" />
+    <Content Include="Template\Template20180002\JsHtml\View_List_Scrip_Add.txt" />
+    <Content Include="Template\Template20180002\JsHtml\View_List_Scrip_Del.txt" />
+    <Content Include="Template\Template20180002\JsHtml\View_List_Scrip_Details.txt" />
+    <Content Include="Template\Template20180002\JsHtml\View_List_Scrip_Edit.txt" />
+    <Content Include="Template\Template20180002\PowerHtml\View_List_Op_Do.txt" />
+    <Content Include="Template\Template20180002\PowerHtml\View_List_Op_Do_NoList.txt" />
+    <Content Include="Template\Template20180002\ViewHtml\DisplayField.txt" />
+    <Content Include="Template\Template20180002\ViewHtml\DisplyBoolfield.txt" />
+    <Content Include="Template\Template20180002\ViewHtml\EditorBoolField.txt" />
+    <Content Include="Template\Template20180002\ViewHtml\EditorDisplyField.txt" />
+    <Content Include="Template\Template20180002\ViewHtml\EditorField.txt" />
+    <Content Include="Template\Template20180002\ViewHtml\EditorSelectField.txt" />
+    <Content Include="Template\Template20180002\ViewHtml\EditorTxtField.txt" />
+    <Content Include="Template\Template20180002\ViewHtml\View_Jquery_Validate.txt" />
+    <Content Include="Template\Template20180002\ViewHtml\View_Linkto.txt" />
+    <Content Include="Template\Template20180002\ViewHtml\View_List_IndexLink.txt" />
+    <Content Include="Template\Template20180002\ViewHtml\View_List_Page_Content.txt" />
+    <Content Include="Template\Template20180002\ViewHtml\View_List_Page_DetailsPage.txt" />
+    <Content Include="Template\Template20180002\ViewHtml\View_Other_Html.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

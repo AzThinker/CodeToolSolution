@@ -4,8 +4,8 @@
        <$Ai_Power_CanGet>
        public IActionResult Details(<$Ai_Keys_Arg_Param_Id>)
         {
-	   var bizExp = _handle.GetExp();
-	   bizExp.AddAndWhere(s => <$Ai_Keys_Param_Id_Lambda_NonePer>);
-	   var model = _handle.Get(bizExp);
-           return View(model);
+	    var model = repository.Query()
+				.Select(<$Ai_Select_Statement_Lambda>
+				 ).Where(s => <$Ai_Keys_Param_Id_Lambda_NonePer>).Go().FirstOrDefault();
+            return View(model);
         }

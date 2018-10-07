@@ -1,56 +1,16 @@
-using Autofac;
-using Atk.DataPortal;
-using Atk.DataPortal.Core;
 using System;
+using SqlRepoEx.Core.CustomAttribute;
 
 // <$Ai_Object_ChineseName> 业务类
 namespace <$Ai_Project_NameSpace>.BLL.<$Ai_ProjectName>
 {
+    [TableName("<$Ai_Do_Table>")]
     /// <summary>
     /// <$Ai_Object_ChineseName> 业务类
     /// </summary>
-   [Serializable]
-   public sealed class <$Ai_Bll_ClassName>Entity:BusinessEditBase <$AI_Bll_Interface>
+   public sealed class <$Ai_Bll_ClassName>
    {
-     
-        #region  业务属性定义
 
         <$Ai_Class_Property_List> 
-
-        #endregion
-       
-	#region 构造部分 
- 
-	/// <summary>
-	/// 数据操作接口
-	/// </summary>
-        [NonSerialized]
-        private I<$Ai_Bll_ClassName>Dal _dbaccess;
-
-        public <$Ai_Bll_ClassName>Entity(I<$Ai_Bll_ClassName>Dal dbaccess)
-        {
-           _dbaccess = dbaccess;
-        }
-
-        /// <summary>
-        /// 当由WCF访问时,不会调用构造方法,因此需重建数据层访问
-        /// </summary>
-        /// <param name="workContext">Autoface容器上下文</param>
-        /// <returns>数据操作接口</returns>
-        private I<$Ai_Bll_ClassName>Dal CheckworkContext()
-        {
-            if (_dbaccess == null)
-            {
-                _dbaccess = this.WorkContext.Resolve<I<$Ai_Bll_ClassName>Dal>();
-            }
-            return _dbaccess;
-        }
-        #endregion
-
-        #region  实现数据操作
-
-	<$Ai_Bll_Interface_imp>
-
-        #endregion
- }
+   }
 }

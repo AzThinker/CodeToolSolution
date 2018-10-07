@@ -1,8 +1,8 @@
-using Autofac;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using Webdiyer.WebControls.AspNetCore;
-using <$Ai_Project_NameSpace>.UIServer.<$Ai_ProjectName>;
+using SqlRepoEx.Abstractions;
+using <$Ai_Project_NameSpace>.BLL.<$Ai_ProjectName>;
 
 
 // <$Ai_Object_ChineseName> 控制器
@@ -13,14 +13,13 @@ namespace <$Ai_Project_UI_FullNameSpace>.<$Ai_ProjectName>.Controllers
         /// </summary>
     public class <$Ai_Bll_ClassName>Controller  :Controller
      {
-       
-       private readonly <$Ai_Bll_ClassName>WebHandle _handle = <$Ai_Bll_ClassName>WebHandle.GetWebHandle();
+        IRepositoryFactory repositoryFactory;
+        IRepository<<$Ai_Bll_ClassName>> repository;
 
-	private ILifetimeScope _lc;
-
-        public <$Ai_Bll_ClassName>Controller(ILifetimeScope lc)
+        public <$Ai_Bll_ClassName>Controller(IRepositoryFactory repositoryFactory)
         {
-            _lc = lc;
+            this.repositoryFactory = repositoryFactory;
+            this.repository = repositoryFactory.Create<<$Ai_Bll_ClassName>>();
         }
 
        <$Ai_Controllers_IndexPage>

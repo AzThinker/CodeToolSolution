@@ -5,7 +5,7 @@
       public ActionResult Create()
         {
           <$Ai_Dropdown_List>
-          var model = _handle.GetNew();
+          var model = new <$Ai_Bll_ClassName>();
           return View(model);
         }
 
@@ -15,11 +15,12 @@
 	<$Ai_Power_CanCreate>
         <$Ai_HttpPost>
        [ActionName("Create")]
-       public IActionResult CreatePost(<$Ai_Bll_ClassName>WebDto model)
+       public IActionResult CreatePost(<$Ai_Bll_ClassName> model)
         {
            if (ModelState.IsValid)
              {
-                _handle.Insert(model);//按增加保存 
+               repository.Insert()<$Ai_Insert_Statement_Lambda>
+				.Go();//按增加保存 
                 return RedirectToAction("Index");
              } 
            <$Ai_Dropdown_List>

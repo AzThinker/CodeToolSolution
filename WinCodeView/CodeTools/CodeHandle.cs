@@ -1,12 +1,12 @@
-﻿using MetaWorkLib.Config;
-using MetaWorkLib.Domain;
-using MetaWorkLib.MetaInit;
-using MetaWorkLib.Utils;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MetaWorkLib.Config;
+using MetaWorkLib.Domain;
+using MetaWorkLib.MetaInit;
+using MetaWorkLib.Utils;
 using WinCodeView.UI;
 
 namespace WinCodeView.CodeTools
@@ -125,6 +125,8 @@ namespace WinCodeView.CodeTools
 
         private static string ReplacContext(this string willrepStr, AzMetaTableEntity azMetaTable)
         {
+
+
             var aznormalset = AzNormalSet.GetAzNormalSet();
             var azbase = aznormalset.AzBase;
             return willrepStr.ReaplaceTemplateForWord("Ai_Project_NameSpace", azbase.AzProjectSpace)
@@ -439,13 +441,13 @@ namespace WinCodeView.CodeTools
             {
                 _msgstringBuilder.AppendLine("throw new NotImplementedException();");
                 return "throw new NotImplementedException();".AddPerTab(2);
-              
+
             }
             var azset = AzNormalSet.GetAzNormalSet();
             models = models
-                .ReaplaceTemplateForWord("Ai_Do_Table", classCreatProperty.ObjPresentation.UpdateTableName)
-                .ReaplaceTemplateForWord("Ai_Query_Table", classCreatProperty.ObjPresentation.UpdateTableName)
-                .ReaplaceTemplateForWord("Ai_SqlDB_ConnectionString", azset.AzConnectionString);
+                .ReaplaceTemplateForWord("Ai_Do_Table", classCreatProperty.ObjPresentation.UpdateTableName.Trim())
+                .ReaplaceTemplateForWord("Ai_Query_Table", classCreatProperty.ObjPresentation.UpdateTableName.Trim())
+                .ReaplaceTemplateForWord("Ai_SqlDB_ConnectionString", azset.AzConnectionString.Trim());
             return models;
         }
         public static string AzDalConcrete(AzMetaTableEntity azMetaTable, AzClassCreatProperty classCreatProperty, IEnumerable<AzMetaCloumEntity> azMetaCloums)
@@ -814,6 +816,7 @@ namespace WinCodeView.CodeTools
                 }
                 models = models.ReaplaceTemplateForWord("Ai_Cmd_PrivateProperty", str2);
             }
+            models = ReplacContextForDB(models, true, classCreatProperty);
             return models.ReplacContext(azMetaTable);
         }
         public static string AzBll_ListClass(AzMetaTableEntity azMetaTable, AzClassCreatProperty classCreatProperty, IEnumerable<AzMetaCloumEntity> azMetaCloums)
@@ -1131,6 +1134,112 @@ namespace WinCodeView.CodeTools
         #endregion
 
         #region Controller
+
+        private static string GetSelectStatementLambda(IEnumerable<AzMetaCloumEntity> azMetaCloums)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            int i = 0;
+            foreach (var col in azMetaCloums)
+            {
+                if ((col.IsSelect == true) && (col.VIsShow == true))
+                {
+                    if (i == 0)
+                    {
+                        stringBuilder.AppendLine($"s=>s.{col.FldNameTo}");
+                    }
+                    else
+                    {
+                        stringBuilder.AddLineStatement($",s=>s.{col.FldNameTo}", 6);
+                    }
+
+                    i += 1;
+                }
+            }
+            return stringBuilder.ToString();
+        }
+        private static string GetUpateStatementLambda(IEnumerable<AzMetaCloumEntity> azMetaCloums)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            int i = 0;
+            foreach (var col in azMetaCloums)
+            {
+                if ((col.IsSelect == true) && (col.VpIsCanEdit == true) && (col.IsIdentity != true))
+                {
+                    if (i > 0)
+                    {
+                        stringBuilder.AddLineStatement($".Set(s=>s.{col.FldNameTo},model.{col.FldNameTo})", 6);
+                    }
+                    else
+                    {
+                        i = 1;
+                        stringBuilder.AppendLine($".Set(s=>s.{col.FldNameTo},model.{col.FldNameTo})");
+                    }
+                }
+            }
+            return stringBuilder.ToString();
+        }
+
+        private static string GetInsertStatementLambda(IEnumerable<AzMetaCloumEntity> azMetaCloums)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            int i = 0;
+            foreach (var col in azMetaCloums)
+            {
+                if ((col.IsSelect == true) && (col.VpIsCanEdit == true) && (col.IsIdentity != true))
+                {
+                    if (i > 0)
+                    {
+                        stringBuilder.AddLineStatement($".With(s=>s.{col.FldNameTo},model.{col.FldNameTo})", 6);
+                    }
+                    else
+                    {
+                        i = 1;
+                        stringBuilder.AppendLine($".With(s=>s.{col.FldNameTo},model.{col.FldNameTo})");
+                    }
+                }
+            }
+            return stringBuilder.ToString();
+        }
+
+        private static string GetOrderByStatementLambda(IEnumerable<AzMetaCloumEntity> azMetaCloums)
+        {
+            var ordstr = azMetaCloums.Where(c => c.IsKeyField == true).FirstOrDefault();
+            if (ordstr == null)
+            {
+                return string.Empty;
+            }
+
+            return $"o=>o.{ordstr.FldNameTo}";
+
+        }
+
+        private static string GetDeleteStatementLambda(IEnumerable<AzMetaCloumEntity> azMetaCloums)
+        {
+            string result = string.Empty;
+            var ordstr = azMetaCloums.Where(c => c.IsKeyField == true);
+            if (ordstr.Count() == 0)
+            {
+                return result;
+            }
+            int i = 0;
+            
+            foreach (var item in ordstr)
+            {
+                if (i == 0)
+                {
+                    result= $"c=>c.{item.FldNameTo}== model.{item.FldNameTo}";
+                }
+                else
+                {
+                    result += $" && c.{item.FldNameTo}== model.{item.FldNameTo}";
+                }
+
+            }
+
+
+            return result;
+
+        }
         public static string AzMVC_Controllers(AzMetaTableEntity azMetaTable, AzClassCreatProperty classProp, IEnumerable<AzMetaCloumEntity> azMetaCloums)
         {
             string path = string.Empty;
@@ -1227,7 +1336,11 @@ namespace WinCodeView.CodeTools
                 var str1 = AzSql_Statement.ParamInputDefault(azMetaCloums, classProp);
                 models = models.ReaplaceTemplateForWord("Ai_Paramlist_Default", str1);
             }
-
+            if (models.Contains("Ai_Select_Statement_Lambda"))
+            {
+                var str1 = GetSelectStatementLambda(azMetaCloums);
+                models = models.ReaplaceTemplateForWord("Ai_Select_Statement_Lambda", str1);
+            }
             return models.ReplacContext(azMetaTable)
                          .MVC_ControllerRepParam(azMetaCloums)
                          .MVC_ReplacContextForCtr(azMetaCloums, classProp);
@@ -1263,7 +1376,11 @@ namespace WinCodeView.CodeTools
                 var str1 = AzSql_Statement.ParamInputDefault(azMetaCloums, classProp);
                 models = models.ReaplaceTemplateForWord("Ai_Paramlist_Default", str1);
             }
-
+            if (models.Contains("Ai_Select_Statement_Lambda"))
+            {
+                var str1 = GetSelectStatementLambda(azMetaCloums);
+                models = models.ReaplaceTemplateForWord("Ai_Select_Statement_Lambda", str1);
+            }
             return models.ReplacContext(azMetaTable)
                          .MVC_ControllerRepParam(azMetaCloums)
                          .MVC_ReplacContextForCtr(azMetaCloums, classProp);
@@ -1332,6 +1449,16 @@ namespace WinCodeView.CodeTools
                 var str1 = AzSql_Statement.MulitKeyStrCondition(azMetaCloums, "s.", "", true);
                 models = models.ReaplaceTemplateForWord("Ai_Keys_Param_Id_Lambda_NonePer", str1);
             }
+            if (models.ContainsForWord("Ai_OrderBy_Statement_Lambda"))
+            {
+                var str1 = GetOrderByStatementLambda(azMetaCloums);
+                models = models.ReaplaceTemplateForWord("Ai_OrderBy_Statement_Lambda", str1);
+            }
+            if (models.ContainsForWord("Ai_Delete_Statement_Lambda"))
+            {
+                var str1 = GetDeleteStatementLambda(azMetaCloums);
+                models = models.ReaplaceTemplateForWord("Ai_Delete_Statement_Lambda", str1);
+            }
             if (models.ContainsForWord("Ai_Dropdown_List"))
             {
                 var str1 = MVC_Droplist(azMetaCloums);
@@ -1395,6 +1522,11 @@ namespace WinCodeView.CodeTools
             {
                 return string.Empty;
             }
+            if (models.Contains("Ai_Insert_Statement_Lambda"))
+            {
+                var str1 = GetInsertStatementLambda(azMetaCloums);
+                models = models.ReaplaceTemplateForWord("Ai_Insert_Statement_Lambda", str1);
+            }
             return models.ReplacContext(azMetaTable)
                          .MVC_ControllerRepParam(azMetaCloums)
                          .MVC_ReplacContextForCtr(azMetaCloums, classProp);
@@ -1408,6 +1540,11 @@ namespace WinCodeView.CodeTools
             if (string.IsNullOrWhiteSpace(models))
             {
                 return string.Empty;
+            }
+            if (models.Contains("Ai_Select_Statement_Lambda"))
+            {
+                var str1 = GetSelectStatementLambda(azMetaCloums);
+                models = models.ReaplaceTemplateForWord("Ai_Select_Statement_Lambda", str1);
             }
             return models.ReplacContext(azMetaTable)
                          .MVC_ControllerRepParam(azMetaCloums)
@@ -1423,6 +1560,11 @@ namespace WinCodeView.CodeTools
             {
                 return string.Empty;
             }
+            if (models.Contains("Ai_Select_Statement_Lambda"))
+            {
+                var str1 = GetSelectStatementLambda(azMetaCloums);
+                models = models.ReaplaceTemplateForWord("Ai_Select_Statement_Lambda", str1);
+            }
             return models.ReplacContext(azMetaTable)
                          .MVC_ControllerRepParam(azMetaCloums)
                          .MVC_ReplacContextForCtr(azMetaCloums, classProp);
@@ -1437,6 +1579,16 @@ namespace WinCodeView.CodeTools
             if (string.IsNullOrWhiteSpace(models))
             {
                 return string.Empty;
+            }
+            if (models.Contains("Ai_Select_Statement_Lambda"))
+            {
+                var str1 = GetSelectStatementLambda(azMetaCloums);
+                models = models.ReaplaceTemplateForWord("Ai_Select_Statement_Lambda", str1);
+            }
+            if (models.Contains("Ai_Upate_Statement_Lambda"))
+            {
+                var str1 = GetUpateStatementLambda(azMetaCloums);
+                models = models.ReaplaceTemplateForWord("Ai_Upate_Statement_Lambda", str1);
             }
             return models.ReplacContext(azMetaTable)
                          .MVC_ControllerRepParam(azMetaCloums)
@@ -1706,6 +1858,12 @@ namespace WinCodeView.CodeTools
                     stringBuilder.AddLineStatement($"@Html.HiddenFor(model => model.{col.FldNameTo})");
                 }
 
+            }
+            var colkeyfilehide= azMetaCloums.Where(m => m.IsKeyField == true);
+
+            foreach (var col in colkeyfilehide)
+            {
+                stringBuilder.AddLineStatement($"@Html.HiddenFor(model => model.{col.FldNameTo})");
             }
             var colshows = azMetaCloums.Where(m => m.IsSelect == true);
             foreach (var col in colshows)
