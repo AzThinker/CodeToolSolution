@@ -39,6 +39,7 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.hasSummary = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -139,11 +140,24 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // hasSummary
+            // 
+            this.hasSummary.AutoSize = true;
+            this.hasSummary.Checked = true;
+            this.hasSummary.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.hasSummary.Location = new System.Drawing.Point(148, 37);
+            this.hasSummary.Name = "hasSummary";
+            this.hasSummary.Size = new System.Drawing.Size(72, 16);
+            this.hasSummary.TabIndex = 10;
+            this.hasSummary.Text = "生成注释";
+            this.hasSummary.UseVisualStyleBackColor = true;
+            // 
             // AzCdgnMasterDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.hasSummary);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
@@ -175,5 +189,6 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox hasSummary;
     }
 }

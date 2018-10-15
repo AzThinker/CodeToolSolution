@@ -14,6 +14,11 @@ namespace WinCodeView.CodeTools
     public static class CodeHandle
     {
         private static StringBuilder _msgstringBuilder;
+
+        private static bool hasSummary;
+
+        public static bool HasSummary { get => hasSummary; set => hasSummary = value; }
+
         static CodeHandle()
         {
             _msgstringBuilder = new StringBuilder();
@@ -48,9 +53,13 @@ namespace WinCodeView.CodeTools
             {
                 if (item.IsSelect == true && ((item.IsDataField == true) || (item.IsBinaryTo == true)))
                 {
-                    stringBuilder.AddLineStatement("/// <summary>");
-                    stringBuilder.AddLineStatement($"///{item.FldDisplay}");
-                    stringBuilder.AddLineStatement("/// </summary>");
+                    if (hasSummary)
+                    {
+                        stringBuilder.AddLineStatement("/// <summary>");
+                        stringBuilder.AddLineStatement($"///{item.FldDisplay}");
+                        stringBuilder.AddLineStatement("/// </summary>");
+                    }
+                   
                     if (item.IsNullable == true)
                     {
                         var entitype = MetaDataTypeHandle.GetMetaDataType(item.FldType);
@@ -97,9 +106,12 @@ namespace WinCodeView.CodeTools
 
                 if (col.IsSelect == true && ((col.IsDataField == true) || (col.IsBinaryTo == true)))
                 {
-                    stringBuilder.AddLineStatement("/// <summary>");
-                    stringBuilder.AddLineStatement($"///{col.FldDisplay}");
-                    stringBuilder.AddLineStatement("/// </summary>");
+                    if (hasSummary)
+                    {
+                        stringBuilder.AddLineStatement("/// <summary>");
+                        stringBuilder.AddLineStatement($"///{col.FldDisplay}");
+                        stringBuilder.AddLineStatement("/// </summary>");
+                    }
                     //  var entitype = MetaDataTypeHandle.GetMetaDataType(item.FldType);
                     if (col.IsRequired == true)
                     {

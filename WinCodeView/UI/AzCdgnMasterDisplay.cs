@@ -81,6 +81,11 @@ namespace WinCodeView.UI
 
         }
 
+        public bool GetHasSummary()
+        {
+            return this.hasSummary.Checked;
+        }
+
         public void SetAzSaveCodeFileFloder(string path)
         {
             textBox1.Text = path;

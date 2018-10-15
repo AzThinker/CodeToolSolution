@@ -390,6 +390,8 @@ namespace WinCodeView
                 return string.Empty;
             }
 
+            CodeHandle.HasSummary = azCdgnMasterDisplay1.GetHasSummary();
+
             string path = string.Empty;
             string floder = string.Empty;
             string filename = string.Empty;
