@@ -44,6 +44,7 @@ namespace MetaWorkLib.Config
         public const string Az_CopyMetaCloumfile = @"DbWork\Az_MetaDataCopy.txt";
         public const string Az_MetaDataMList_IniOnefile = @"DbWork\Az_MetaDataMList_IniOne.txt";
         public const string Az_InitColumnValueSchemafile = @"DbWork\Az_InitColumnValueSchema.txt";
+        public const string Az_InitOneColumnValueSchemafile = @"DbWork\Az_InitOneColumnValueSchema.txt";
         //
         public const string Az_DBMetaDataTypefile = @"MetaFiles\DBMetaDataType.txt";
         public const string Az_ClassDataTypefile = @"MetaFiles\ClassDataType.txt";

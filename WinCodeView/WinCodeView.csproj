@@ -142,6 +142,7 @@
     <Compile Include="AzClassDesign.Designer.cs">
       <DependentUpon>AzClassDesign.cs</DependentUpon>
     </Compile>
+    <Compile Include="CodeTools\AzBllPropertyAttribute.cs" />
     <Compile Include="CodeTools\AzCreateItem.cs" />
     <Compile Include="DialogUI\AzCreateCodeSelect.cs">
       <SubType>Form</SubType>

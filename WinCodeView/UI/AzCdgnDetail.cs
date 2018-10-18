@@ -197,11 +197,14 @@ namespace WinCodeView.UI
         private void tspBtnAdd_Click(object sender, EventArgs e)
         {
             AzColumsEdit.ShowAzColumsEdit(azMetaCloumListEntityBindingSource, currentObject.ObjModeName, true);
+
+            LoadMataColum();
         }
 
         private void tspBtnEdit_Click(object sender, EventArgs e)
         {
             AzColumsEdit.ShowAzColumsEdit(azMetaCloumListEntityBindingSource, currentObject.ObjModeName);
+            LoadMataColum();
         }
 
         private void tspBtnDelete_Click(object sender, EventArgs e)
@@ -218,6 +221,8 @@ namespace WinCodeView.UI
                 if (AzMetaCloumHandle.Handle().Delete(entity) == 1)
                 {
                     azMetaCloumListEntityBindingSource.RemoveCurrent();
+                    row.AcceptChanges();
+                    tspBtnSave.Enabled = DataChangeAskSave();
                 }
             }
         }

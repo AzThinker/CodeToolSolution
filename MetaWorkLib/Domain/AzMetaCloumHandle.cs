@@ -1,11 +1,11 @@
-﻿using MetaWorkLib.Config;
-using MetaWorkLib.Utils;
-using SqlRepoEx.Abstractions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MetaWorkLib.Config;
+using MetaWorkLib.Utils;
+using SqlRepoEx.Abstractions;
 
 namespace MetaWorkLib.Domain
 {
@@ -63,7 +63,14 @@ namespace MetaWorkLib.Domain
 
         public AzMetaCloumEntity Insert(AzMetaCloumEntity entity)
         {
-            return repository.Insert().UsingTableName(azNormalSet.AzMetaCloumName).For(entity).Go();
+            var result = repository.Insert().UsingTableName(azNormalSet.AzMetaCloumName).For(entity).Go();
+
+        
+
+            InitOneColumnValueSchema(entity.TableName, entity.FldName);
+
+            return result;
+
         }
 
 
@@ -118,6 +125,17 @@ namespace MetaWorkLib.Domain
         {
             string sql = MetadataOperate.DbCreateLoad(BaseConstants.Az_InitColumnValueSchemafile)
                          .ReaplaceTemplate(BaseConstants.Az_Parameters1, initSchemaName.AddSingleQuotes())
+                         .ReaplaceTemplate(BaseConstants.AppNameDefautSign, MetadataOperate.GetDefAppNameUpdate(azNormalSet.AzBase.AzTablePrefix)); ;
+
+            return repository.ExecuteNonQuerySql().WithSql(sql).Go();
+
+        }
+
+        public int InitOneColumnValueSchema(string initSchemaName, string fldName)
+        {
+            string sql = MetadataOperate.DbCreateLoad(BaseConstants.Az_InitOneColumnValueSchemafile)
+                         .ReaplaceTemplate(BaseConstants.Az_Parameters1, initSchemaName.AddSingleQuotes())
+                          .ReaplaceTemplate(BaseConstants.Az_Parameters2, fldName.AddSingleQuotes())
                          .ReaplaceTemplate(BaseConstants.AppNameDefautSign, MetadataOperate.GetDefAppNameUpdate(azNormalSet.AzBase.AzTablePrefix)); ;
 
             return repository.ExecuteNonQuerySql().WithSql(sql).Go();

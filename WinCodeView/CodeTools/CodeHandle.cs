@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using MetaWorkLib.Config;
 using MetaWorkLib.Domain;
 using MetaWorkLib.MetaInit;
@@ -43,23 +44,80 @@ namespace WinCodeView.CodeTools
             return FileHelper.ReadTemplateFile(path);
         }
 
+        public static AzBllPropertyAttribute GetPropertyAttribute()
+        {
+            AzBllPropertyAttribute azBllProperty = new AzBllPropertyAttribute();
+            JavaScriptSerializer js = new JavaScriptSerializer();
+
+            string path = GetCurrentTemplatePath() + "BllPropertyAttribute.json";
+            string property = FileHelper.ReadTemplateFile(path);
+            if (string.IsNullOrWhiteSpace(property))
+            {
+                return azBllProperty;
+            }
+            return js.Deserialize<AzBllPropertyAttribute>(property);
+        }
+
+
+
         #region DalDto
 
 
         private static string GetPropertyList(this string willrepStr, IEnumerable<AzMetaCloumEntity> azMetaCloums)
         {
+            AzBllPropertyAttribute azBllProperty = GetPropertyAttribute();
+
             StringBuilder stringBuilder = new StringBuilder();
             foreach (var item in azMetaCloums)
             {
                 if (item.IsSelect == true && ((item.IsDataField == true) || (item.IsBinaryTo == true)))
                 {
+                    if (!string.IsNullOrWhiteSpace( azBllProperty.IsDataField))
+                    {
+                        stringBuilder.AddLineStatement(azBllProperty.IsDataField);
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(azBllProperty.IsKeyField) && item.IsKeyField==true)
+                    {
+                        stringBuilder.AddLineStatement(azBllProperty.IsKeyField);
+                    }
+                    if (!string.IsNullOrWhiteSpace(azBllProperty.IsIdentityField) && item.IsIdentity == true)
+                    {
+                        stringBuilder.AddLineStatement(azBllProperty.IsIdentityField);
+                    }
                     if (hasSummary)
                     {
                         stringBuilder.AddLineStatement("/// <summary>");
                         stringBuilder.AddLineStatement($"///{item.FldDisplay}");
                         stringBuilder.AddLineStatement("/// </summary>");
                     }
+
+                    if (item.IsNullable == true)
+                    {
+                        var entitype = MetaDataTypeHandle.GetMetaDataType(item.FldType);
+                        stringBuilder.AddLineStatement($"public {entitype.CodeGeneric} {item.FldNameTo} {{ get;set;}}");
+                    }
+                    else
+                    {
+                        stringBuilder.AddLineStatement($"public {item.FldCodeType} {item.FldNameTo} {{ get;set;}}");
+                    }
+
+                }
+                else if (item.IsSelect == true &&  item.IsDataField != true )
+ {
+                    if (!string.IsNullOrWhiteSpace(azBllProperty.NoDataField))
+                    {
+                        stringBuilder.AddLineStatement(azBllProperty.NoDataField);
+                    }
+
                    
+                    if (hasSummary)
+                    {
+                        stringBuilder.AddLineStatement("/// <summary>");
+                        stringBuilder.AddLineStatement($"///{item.FldDisplay}");
+                        stringBuilder.AddLineStatement("/// </summary>");
+                    }
+
                     if (item.IsNullable == true)
                     {
                         var entitype = MetaDataTypeHandle.GetMetaDataType(item.FldType);
@@ -1234,12 +1292,12 @@ namespace WinCodeView.CodeTools
                 return result;
             }
             int i = 0;
-            
+
             foreach (var item in ordstr)
             {
                 if (i == 0)
                 {
-                    result= $"c=>c.{item.FldNameTo}== model.{item.FldNameTo}";
+                    result = $"c=>c.{item.FldNameTo}== model.{item.FldNameTo}";
                 }
                 else
                 {
@@ -1871,7 +1929,7 @@ namespace WinCodeView.CodeTools
                 }
 
             }
-            var colkeyfilehide= azMetaCloums.Where(m => m.IsKeyField == true);
+            var colkeyfilehide = azMetaCloums.Where(m => m.IsKeyField == true);
 
             foreach (var col in colkeyfilehide)
             {
