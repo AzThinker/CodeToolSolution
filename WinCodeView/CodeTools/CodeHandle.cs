@@ -72,18 +72,21 @@ namespace WinCodeView.CodeTools
             {
                 if (item.IsSelect == true && ((item.IsDataField == true) || (item.IsBinaryTo == true)))
                 {
-                    if (!string.IsNullOrWhiteSpace( azBllProperty.IsDataField))
-                    {
-                        stringBuilder.AddLineStatement(azBllProperty.IsDataField);
-                    }
 
-                    if (!string.IsNullOrWhiteSpace(azBllProperty.IsKeyField) && item.IsKeyField==true)
+
+                    if (!string.IsNullOrWhiteSpace(azBllProperty.IsKeyField) && item.IsKeyField == true)
                     {
                         stringBuilder.AddLineStatement(azBllProperty.IsKeyField);
                     }
+                    else
                     if (!string.IsNullOrWhiteSpace(azBllProperty.IsIdentityField) && item.IsIdentity == true)
                     {
                         stringBuilder.AddLineStatement(azBllProperty.IsIdentityField);
+                    }
+                    else
+                    if (!string.IsNullOrWhiteSpace(azBllProperty.IsDataField))
+                    {
+                        stringBuilder.AddLineStatement(azBllProperty.IsDataField);
                     }
                     if (hasSummary)
                     {
@@ -103,14 +106,14 @@ namespace WinCodeView.CodeTools
                     }
 
                 }
-                else if (item.IsSelect == true &&  item.IsDataField != true )
- {
+                else if (item.IsSelect == true && item.IsDataField != true)
+                {
                     if (!string.IsNullOrWhiteSpace(azBllProperty.NoDataField))
                     {
                         stringBuilder.AddLineStatement(azBllProperty.NoDataField);
                     }
 
-                   
+
                     if (hasSummary)
                     {
                         stringBuilder.AddLineStatement("/// <summary>");

@@ -1,16 +1,17 @@
 using System;
 using SqlRepoEx.Core.CustomAttribute;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 // <$Ai_Object_ChineseName> 业务类
 namespace <$Ai_Project_NameSpace>.BLL.<$Ai_ProjectName>
 {
-    [TableName("<$Ai_Do_Table>")]
+    [Table("<$Ai_Do_Table>")]
     /// <summary>
     /// <$Ai_Object_ChineseName> 业务类
     /// </summary>
    public sealed class <$Ai_Bll_ClassName>
    {
-
         <$Ai_Class_Property_List> 
    }
 }

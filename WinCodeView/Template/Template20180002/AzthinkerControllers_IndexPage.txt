@@ -7,7 +7,7 @@
         {
             var queryresult = repository.Query()
 			 .Select(<$Ai_Select_Statement_Lambda>
-                ).OrderBy(<$Ai_OrderBy_Statement_Lambda>).Page(20, pageindex-1).PageGo();
+                ).OrderBy(<$Ai_OrderBy_Statement_Lambda>).Page(20, pageindex).PageGo();
 
             var model = <$Ai_Bll_List_ClassName>.GetModelList(queryresult, 20, pageindex);
             string xrh = Request.Headers["X-Requested-With"];

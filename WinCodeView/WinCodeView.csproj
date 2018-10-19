@@ -384,6 +384,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Template\Template20180001\TemplateSet.json" />
+    <None Include="Template\Template20180002\BllPropertyAttribute.json" />
     <None Include="Template\Template20180002\TemplateSet.json" />
   </ItemGroup>
   <ItemGroup>
