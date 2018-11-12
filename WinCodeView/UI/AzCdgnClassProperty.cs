@@ -1,5 +1,6 @@
 ﻿using MetaWorkLib.Config;
 using MetaWorkLib.Domain;
+using MetaWorkLib.MetaInit;
 using MetaWorkLib.Utils;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,15 @@ namespace WinCodeView.UI
         private void AzCdgnClassProperty_Load(object sender, EventArgs e)
         {
             propertyGrid1.SelectedObject = new AzNodeLevel0Property();
+            if (DesignMode)
+            {
+                return;
+            }
+            if (string.Compare(System.Diagnostics.Process.GetCurrentProcess().ProcessName, "devenv") == 0)
+            {
+                return;
+            }
+            UpdateTableFromConverter.StringArray= DataHelper.GetGetDBListForProperty();
 
         }
         void propertyGrid1_SelectedObjectsChanged(object sender, EventArgs e)
