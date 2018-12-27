@@ -40,6 +40,7 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripSeparator();
             this.tspButtonClose = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.about1 = new WinCodeView.UI.about();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Az_NoCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fldnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,7 +92,6 @@
             this.tspMenuCreateAllDBTabel = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.about1 = new WinCodeView.UI.about();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -175,6 +175,14 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1467, 688);
             this.panel1.TabIndex = 3;
+            // 
+            // about1
+            // 
+            this.about1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.about1.Location = new System.Drawing.Point(287, 648);
+            this.about1.Name = "about1";
+            this.about1.Size = new System.Drawing.Size(1180, 40);
+            this.about1.TabIndex = 4;
             // 
             // dataGridView1
             // 
@@ -486,6 +494,7 @@
             this.toolStrip2.Size = new System.Drawing.Size(1180, 40);
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
+            this.toolStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip2_ItemClicked);
             // 
             // tspButtonFirst
             // 
@@ -659,14 +668,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // about1
-            // 
-            this.about1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.about1.Location = new System.Drawing.Point(287, 648);
-            this.about1.Name = "about1";
-            this.about1.Size = new System.Drawing.Size(1180, 40);
-            this.about1.TabIndex = 4;
             // 
             // AzCustomMateManage
             // 

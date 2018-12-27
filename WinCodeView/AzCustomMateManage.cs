@@ -573,5 +573,10 @@ namespace WinCodeView
 
 
         }
+
+        private void toolStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

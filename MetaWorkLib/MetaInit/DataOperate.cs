@@ -77,7 +77,7 @@ namespace MetaWorkLib.MetaInit
             }
             tempstr = string.Format(constraintSql, azMetaTable.SchemaName, keyid);
             stringBuilder.Append(tempstr);
-            stringBuilder.Append($" UPDATE [dbo].[{AzNormalSet.GetAzNormalSet().AzMetaCloumName}] SET TpyeId=1 where TableName=['{azMetaTable.SchemaName}']");
+            stringBuilder.Append($"; UPDATE [dbo].[{AzNormalSet.GetAzNormalSet().AzMetaCloumName}] SET TpyeId=1 where TableName='{azMetaTable.SchemaName}'");
 
             return stringBuilder.ToString();
         }

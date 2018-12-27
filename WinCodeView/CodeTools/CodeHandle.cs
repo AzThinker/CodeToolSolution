@@ -91,7 +91,7 @@ namespace WinCodeView.CodeTools
                     if (hasSummary)
                     {
                         stringBuilder.AddLineStatement("/// <summary>");
-                        stringBuilder.AddLineStatement($"///{item.FldDisplay}");
+                        stringBuilder.AddLineStatement($"///{item.FldDisplay.Replace(System.Environment.NewLine, "")}");
                         stringBuilder.AddLineStatement("/// </summary>");
                     }
 
