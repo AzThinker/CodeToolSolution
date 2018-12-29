@@ -117,7 +117,7 @@ namespace WinCodeView.CodeTools
                     if (hasSummary)
                     {
                         stringBuilder.AddLineStatement("/// <summary>");
-                        stringBuilder.AddLineStatement($"///{item.FldDisplay}");
+                        stringBuilder.AddLineStatement($"///{item.FldDisplay.Replace(System.Environment.NewLine, "")}");
                         stringBuilder.AddLineStatement("/// </summary>");
                     }
 
@@ -194,6 +194,33 @@ namespace WinCodeView.CodeTools
             }
 
             return stringBuilder.ToString();
+        }
+
+        private static string GetWebPropertyList_WithAttribute( AzMetaCloumEntity azMetaCloum)
+        {
+           
+            string stringval = string.Empty;
+            
+              
+
+                if (azMetaCloum.IsSelect == true && ((azMetaCloum.IsDataField == true) || (azMetaCloum.IsBinaryTo == true)))
+                {
+
+                    //  var entitype = MetaDataTypeHandle.GetMetaDataType(item.FldType);
+                    if (azMetaCloum.IsRequired == true)
+                    {
+                        stringval = stringval + ",required:true";
+                    }
+
+                    if ((azMetaCloum.MaxValue>0) && (azMetaCloum.IsLimit==true))
+                    {
+                        stringval = stringval + $",validType:'length[{azMetaCloum.MinValue},{azMetaCloum.MaxValue}]'";
+                    }
+                }
+
+           
+
+            return stringval;
         }
 
         private static string ReplacContext(this string willrepStr, AzMetaTableEntity azMetaTable)
@@ -1696,7 +1723,7 @@ namespace WinCodeView.CodeTools
                 path = GetCurrentTemplatePath() + @"ViewHtml\EditorSelectField.txt";
             }
             _msgstringBuilder.AppendLine(path);
-            if (string.IsNullOrWhiteSpace(path))
+            if (!string.IsNullOrWhiteSpace(path))
             {
                 models = FileHelper.ReadTemplateFile(path);
             }
@@ -1708,7 +1735,7 @@ namespace WinCodeView.CodeTools
             }
             if (models.ContainsForWord("Ai_View_Field_Lable"))
             {
-                models = models.ReaplaceTemplateForWord("Ai_View_Field_Lable", azMetaCloum.FldDisplay);
+                models = models.ReaplaceTemplateForWord("Ai_View_Field_Lable", azMetaCloum.FldDisplay.Replace(System.Environment.NewLine, ""));
             }
             if (models.ContainsForWord("Ai_View_Field_Name"))
             {
@@ -1717,6 +1744,10 @@ namespace WinCodeView.CodeTools
             if (models.ContainsForWord("Ai_View_Field_SelectDropList"))
             {
                 models = models.ReaplaceTemplateForWord("Ai_View_Field_SelectDropList", SelectitemViewHtml(azMetaCloum));
+            }
+            if (models.ContainsForWord("Ai_Field_Require"))
+            {
+                models = models.ReaplaceTemplateForWord("Ai_Field_Require", GetWebPropertyList_WithAttribute(azMetaCloum));
             }
             return models;
 
@@ -1742,7 +1773,7 @@ namespace WinCodeView.CodeTools
                 path = GetCurrentTemplatePath() + @"ViewHtml\DisplayTxtfield.txt";
             }
             _msgstringBuilder.AppendLine(path);
-            if (string.IsNullOrWhiteSpace(path))
+            if (!string.IsNullOrWhiteSpace(path))
             {
                 models = FileHelper.ReadTemplateFile(path);
             }
@@ -1754,7 +1785,7 @@ namespace WinCodeView.CodeTools
             }
             if (models.ContainsForWord("Ai_View_Field_Lable"))
             {
-                models = models.ReaplaceTemplateForWord("Ai_View_Field_Lable", azMetaCloum.FldDisplay);
+                models = models.ReaplaceTemplateForWord("Ai_View_Field_Lable", azMetaCloum.FldDisplay.Replace(System.Environment.NewLine, ""));
             }
             if (models.ContainsForWord("Ai_View_Field_Name"))
             {

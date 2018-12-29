@@ -168,8 +168,9 @@ namespace WinCodeView.UI
             tspButtonSort.Enabled = dataGridView1.Rows.Count > 0;
             tspBtnEdit.Enabled = dataGridView1.Rows.Count > 0;
             tspBtnDelete.Enabled = dataGridView1.Rows.Count > 0;
+            
         }
-
+        
         private void dataGridView1_CellValidated(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1.Rows[e.RowIndex].ErrorText = null;

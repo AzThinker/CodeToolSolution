@@ -84,6 +84,9 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ACM_ReNameColumn = new System.Windows.Forms.ToolStripMenuItem();
             this.ACM_ReNameColumns = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tspLookSchema = new System.Windows.Forms.ToolStripMenuItem();
+            this.tspLookParam = new System.Windows.Forms.ToolStripMenuItem();
             this.azMetaCloumListEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -98,9 +101,7 @@
             this.atkVIsShow = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.atkIsLimit = new System.Windows.Forms.CheckBox();
             this.atkIsRequired = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -124,9 +125,8 @@
             this.richSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tspLookSchema = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.tspLookParam = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel2.SuspendLayout();
             this.toolStrip2.SuspendLayout();
@@ -139,8 +139,6 @@
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
@@ -560,7 +558,7 @@
             this.tspLookSchema,
             this.tspLookParam});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(262, 198);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(262, 176);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // ACM_CopyFiledValue
@@ -607,6 +605,25 @@
             this.ACM_ReNameColumns.Size = new System.Drawing.Size(261, 22);
             this.ACM_ReNameColumns.Text = "更新当前表所有显示名至数据库";
             this.ACM_ReNameColumns.Click += new System.EventHandler(this.ACM_ReNameColumns_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(258, 6);
+            // 
+            // tspLookSchema
+            // 
+            this.tspLookSchema.Name = "tspLookSchema";
+            this.tspLookSchema.Size = new System.Drawing.Size(261, 22);
+            this.tspLookSchema.Text = "查看查询数据结构";
+            this.tspLookSchema.Click += new System.EventHandler(this.tspLookSchema_Click);
+            // 
+            // tspLookParam
+            // 
+            this.tspLookParam.Name = "tspLookParam";
+            this.tspLookParam.Size = new System.Drawing.Size(261, 22);
+            this.tspLookParam.Text = "查看存储参数";
+            this.tspLookParam.Click += new System.EventHandler(this.tspLookParam_Click);
             // 
             // azMetaCloumListEntityBindingSource
             // 
@@ -740,10 +757,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.textBox3);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.numericUpDown2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.numericUpDown1);
             this.groupBox2.Controls.Add(this.atkIsLimit);
             this.groupBox2.Controls.Add(this.atkIsRequired);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -757,19 +774,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(330, 30);
+            this.label2.Location = new System.Drawing.Point(310, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 12);
             this.label2.TabIndex = 5;
             this.label2.Text = "字串长最大值：";
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.azMetaCloumListEntityBindingSource, "MaxValue", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
-            this.numericUpDown2.Location = new System.Drawing.Point(420, 26);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(88, 21);
-            this.numericUpDown2.TabIndex = 4;
             // 
             // label1
             // 
@@ -779,14 +788,6 @@
             this.label1.Size = new System.Drawing.Size(89, 12);
             this.label1.TabIndex = 3;
             this.label1.Text = "字串长最小值：";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.azMetaCloumListEntityBindingSource, "MinValue", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0", "N0"));
-            this.numericUpDown1.Location = new System.Drawing.Point(206, 28);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(88, 21);
-            this.numericUpDown1.TabIndex = 2;
             // 
             // atkIsLimit
             // 
@@ -1018,24 +1019,21 @@
             this.textBox1.Size = new System.Drawing.Size(1272, 685);
             this.textBox1.TabIndex = 0;
             // 
-            // tspLookSchema
+            // textBox3
             // 
-            this.tspLookSchema.Name = "tspLookSchema";
-            this.tspLookSchema.Size = new System.Drawing.Size(261, 22);
-            this.tspLookSchema.Text = "查看查询数据结构";
-            this.tspLookSchema.Click += new System.EventHandler(this.tspLookSchema_Click);
+            this.textBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.azMetaCloumListEntityBindingSource, "MinValue", true));
+            this.textBox3.Location = new System.Drawing.Point(194, 26);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 21);
+            this.textBox3.TabIndex = 6;
             // 
-            // toolStripSeparator4
+            // textBox4
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(258, 6);
-            // 
-            // tspLookParam
-            // 
-            this.tspLookParam.Name = "tspLookParam";
-            this.tspLookParam.Size = new System.Drawing.Size(261, 22);
-            this.tspLookParam.Text = "查看存储参数";
-            this.tspLookParam.Click += new System.EventHandler(this.tspLookParam_Click);
+            this.textBox4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.azMetaCloumListEntityBindingSource, "MaxValue", true));
+            this.textBox4.Location = new System.Drawing.Point(402, 28);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 21);
+            this.textBox4.TabIndex = 7;
             // 
             // AzCdgnDetail
             // 
@@ -1062,8 +1060,6 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -1095,9 +1091,7 @@
         private System.Windows.Forms.CheckBox atkVIsShow;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.CheckBox atkIsLimit;
         private System.Windows.Forms.CheckBox atkIsRequired;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -1169,5 +1163,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem tspLookSchema;
         private System.Windows.Forms.ToolStripMenuItem tspLookParam;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }
