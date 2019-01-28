@@ -39,15 +39,11 @@
     <StartupObject>WinCodeView.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Atk.ExpressionTurn">
-      <HintPath>..\..\Dll\Atk.ExpressionTurn.dll</HintPath>
+    <Reference Include="CircularProgressBar, Version=2.6.6823.24527, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CircularProgressBar.2.6.6823.24527\lib\net35-client\CircularProgressBar.dll</HintPath>
     </Reference>
-    <Reference Include="CircularProgressBar">
-      <HintPath>..\..\Dll\CircularProgressBar.dll</HintPath>
-    </Reference>
-    <Reference Include="DataTableToObjectEx, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\DotnetRep\meRep\DataTableToObjectEx\DataTableToObject\bin\Debug\DataTableToObjectEx.dll</HintPath>
+    <Reference Include="DataTableToObjectEx">
+      <HintPath>..\..\DataTableToObjectEx\DataTableToObject\bin\Debug\DataTableToObjectEx.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=1.0.0.999, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.1.0.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
@@ -65,13 +61,7 @@
       <HintPath>..\packages\Microsoft.Extensions.Primitives.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="SqlRepoEx">
-      <HintPath>D:\DotnetRep\meRep\SqlRepoEx\SqlRepo.SqlServer.Static\bin\Debug\netstandard2.0\SqlRepoEx.dll</HintPath>
-    </Reference>
-    <Reference Include="SqlRepoEx.SqlServer">
-      <HintPath>D:\DotnetRep\meRep\SqlRepoEx\SqlRepo.SqlServer.Static\bin\Debug\netstandard2.0\SqlRepoEx.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="SqlRepoEx.SqlServer.Static">
-      <HintPath>D:\DotnetRep\meRep\SqlRepoEx\SqlRepo.SqlServer.Static\bin\Debug\netstandard2.0\SqlRepoEx.SqlServer.Static.dll</HintPath>
+      <HintPath>..\..\SqlRepoEx\SqlRepo\bin\Debug\netstandard2.0\SqlRepoEx.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -126,13 +116,13 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="TableTranslatorEx">
-      <HintPath>D:\DotnetRep\meRep\TableTranslatorEx\TableTranslator\bin\Debug\TableTranslatorEx.dll</HintPath>
+      <HintPath>..\..\TableTranslatorEx\TableTranslator.Examples\bin\Debug\TableTranslatorEx.dll</HintPath>
     </Reference>
     <Reference Include="Westwind.RazorHosting, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Westwind.RazorHosting.3.3.0\lib\net45\Westwind.RazorHosting.dll</HintPath>
     </Reference>
-    <Reference Include="WinFormAnimation">
-      <HintPath>..\..\Dll\WinFormAnimation.dll</HintPath>
+    <Reference Include="WinFormAnimation, Version=1.5.6298.3372, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinFormAnimation.1.5.6298.3372\lib\net35-client\WinFormAnimation.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
